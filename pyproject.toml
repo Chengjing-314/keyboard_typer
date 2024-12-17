@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "keyboard-typer"
+version = "0.2.2"
+authors = [{ name = "Chengjing Yuan ", email = "cyuan@ucsd.edu" }]
+description = "Keyboard Typer"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9" # do not support 3.8 anymore
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "ninja",
+    "tyro",
+    "einops",
+    "gymnasium",
+    "transforms3d",
+    "wandb",
+    "torch-geometric",
+    "zarr",
+    "filelock",
+    "fpsample",
+    "python-dotenv",
+    "universal_pathlib",
+    "fsspec[s3]",
+    "huggingface_hub[cli,hf_transfer]",
+    "fastdev[full]>=0.1.6",
+    "viser>=0.2.0,<0.2.4",
+    "mani-skill==3.0.0b15",
+    "yourdfpy",
+    "lightning>=2.4.0",
+    "warp-lang",
+    "dm_control",
+    "ipython",
+    "lovely-tensors",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["keyboard_typer*"]
+
+[tool.ruff]
+line-length = 120
+ignore = ["E402", "F722"]
+
