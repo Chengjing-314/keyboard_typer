@@ -36,9 +36,7 @@ class RobotConstants:
     ARM_POSE_PD_EE_ROT_UPPER: float = 0.05
 
     ARM_DOF: int = 7
-    HAND_DOF: int = 10
-
-    CONTACT_THRESHOLD: float = 0.1
+    HAND_DOF: int = 6  # we use linear mimic joint for hand
 
     NORMALIZE_PDEE: bool = True
     NORMALIZE_PD_HANDJOINT: bool = True
@@ -289,6 +287,11 @@ class XArm7AbilityBase(BaseAgent):
         p = self.wrist_link.pose.p.detach().cpu().numpy()
         q = self.wrist_link.pose.q.detach().cpu().numpy()
         return p, q
+
+    def reset(self):
+        kf = self.keyframes["rest"]
+        self.robot.set_qpos(kf.qpos)
+        self.robot.set_pose(kf.pose)
 
 
 @register_agent()
