@@ -10,8 +10,8 @@ from keyboard_typer.constants import ASSETS_ROOT
 
 @register_env("KeyboardMapperEnv")
 class KeyboardMapperEnv(BaseEnv):
-    urdf_path = f"{ASSETS_ROOT}/keyboards/cleaned/12996/mobility.urdf"
-    bb_box_path = f"{ASSETS_ROOT}/keyboards/cleaned/12996/bounding_box.json"
+    urdf_path = f"{ASSETS_ROOT}/keyboards/simplified/12996/mobility.urdf"
+    bb_box_path = f"{ASSETS_ROOT}/keyboards/simplified/12996/bounding_box.json"
 
     def __init__(self, *args, robot_uids="panda", **kwargs):
         super().__init__(*args, robot_uids=robot_uids, **kwargs)

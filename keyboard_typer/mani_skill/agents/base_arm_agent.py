@@ -217,6 +217,16 @@ class XArm7AbilityBase(BaseAgent):
 
         return torch.stack(pos, dim=1).float().to(self.device)
 
+    def get_finger_tip_pos(self, flatten=True):
+        pos = []
+        for link in self.finger_tip_links:
+            pos.append(link.pose.p)
+
+        pos = torch.stack(pos, dim=1).float().to(self.device)
+        if flatten:
+            return pos.flatten(start_dim=1)
+        return pos
+
     def disable_finger_self_collision(self):
         """
 
