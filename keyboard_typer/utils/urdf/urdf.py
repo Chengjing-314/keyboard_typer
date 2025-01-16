@@ -58,6 +58,27 @@ class KeyboardParser:
                 centroids.append(mesh.bounding_box.centroid)
         return np.array(centroids)
 
+    def get_merged_collision_mesh(self, link, root_path: str = "") -> trimesh.Trimesh:
+        if not hasattr(link, "collisions") or not link.collisions:
+            return trimesh.Trimesh()
+
+        collision_meshes = []
+        for collision in link.collisions:
+            if collision.geometry.mesh is not None:
+                filename = collision.geometry.mesh.filename
+                mesh_path = root_path / filename if root_path else filename
+
+                mesh = trimesh.load(mesh_path, force="mesh")
+
+                collision_meshes.append(mesh)
+
+        if collision_meshes:
+            merged = trimesh.util.concatenate(collision_meshes)
+            return merged
+        else:
+            # No valid mesh collisions found
+            return trimesh.Trimesh()
+
 
 def extract_link_centroids(parser, active_joints, root_path: str, base_link_name="link_0"):
     """Extract centroids of active links and the base link."""
@@ -127,5 +148,91 @@ def main():
     __import__("IPython").embed(header="urdf.py:125")
 
 
+def merge_collision_meshes():
+    from pathlib import Path
+    from yourdfpy.urdf import Collision, Geometry, Mesh
+
+    # Update this path as necessary
+    urdf_path = (
+        "/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/mobility.urdf"
+    )
+
+    # Create the parser
+    config = KeyboardParserConfig(urdf_path=urdf_path)
+    parser = KeyboardParser(config)
+
+    # We'll save our new URDF next to the old one with a "_merged" suffix
+    urdf_dir = Path(urdf_path).parent
+    new_urdf_path = urdf_dir / "mobility_merged.urdf"
+
+    # Create a directory for merged collision meshes if it doesn't exist
+    merged_mesh_dir = urdf_dir / "merged_collision_meshes"
+    merged_mesh_dir.mkdir(exist_ok=True)
+
+    # Iterate over each link in the URDF
+    for link in parser.urdf.robot.links:
+        if not hasattr(link, "collisions") or len(link.collisions) == 0:
+            continue  # No collisions to merge
+
+        collision_meshes = []
+
+        # Collect all collision meshes for this link
+        for collision in link.collisions:
+            # Check if collision geometry is a mesh (as opposed to box, cylinder, etc.)
+            if collision.geometry.mesh is None:
+                continue
+
+            # Full path to the mesh file
+            mesh_filename = collision.geometry.mesh.filename
+            mesh_path = (urdf_dir / mesh_filename).resolve()
+
+            if not mesh_path.exists():
+                print(f"Warning: Collision mesh file {mesh_path} not found.")
+                continue
+
+            # Load the mesh
+            m = trimesh.load(mesh_path, force="mesh")
+            if m.is_empty:
+                continue
+
+            # If there's a transform (origin) in the collision, apply it
+            # (Assuming your URDF parser sets collision.origin as a 4x4 matrix or None)
+            if collision.origin is not None:
+                m.apply_transform(collision.origin)
+
+            collision_meshes.append(m)
+
+        if len(collision_meshes) == 0:
+            # No valid collision meshes found; skip
+            continue
+
+        # Merge all collision meshes for this link
+        merged_mesh = trimesh.util.concatenate(collision_meshes)
+
+        # Export the merged mesh to a new file
+        merged_mesh_filename = f"merged_collision_meshes/merged_{link.name}.stl"
+        merged_mesh_path = urdf_dir / merged_mesh_filename
+        merged_mesh.export(merged_mesh_path)
+
+        # Clear old collisions from the link
+        link.collisions.clear()
+
+        # Create a single new collision entry referencing our merged mesh
+        # Note: If your parser or URDF library uses a different object name, adjust accordingly
+        new_collision = Collision(
+            name="merged_collision",
+            geometry=Geometry(
+                mesh=Mesh(filename=merged_mesh_filename)
+            ),  # or just merged_mesh_filename
+            origin=np.eye(4),
+        )
+        link.collisions.append(new_collision)
+
+    # Finally, save the updated URDF
+
+    parser.urdf.write_xml_file(new_urdf_path)
+    print(f"New URDF with merged collision meshes saved to: {new_urdf_path}")
+
+
 if __name__ == "__main__":
-    main()
+    merge_collision_meshes()

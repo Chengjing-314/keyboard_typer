@@ -22,11 +22,11 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class RobotConstants:
-    ARM_STIFFNESS: float = 1e3
+    ARM_STIFFNESS: float = 500
     ARM_DAMPING: float = 100
     ARM_FORCE_LIMIT: float = 50
 
-    HAND_STIFFNESS: float = 1e3
+    HAND_STIFFNESS: float = 500
     HAND_DAMPING: float = 100
     HAND_FORCE_LIMIT: float = 50
 
@@ -297,6 +297,9 @@ class XArm7AbilityBase(BaseAgent):
         p = self.wrist_link.pose.p.detach().cpu().numpy()
         q = self.wrist_link.pose.q.detach().cpu().numpy()
         return p, q
+
+    def get_wrist_raw_pose(self):
+        return self.wrist_link.pose.raw_pose
 
     def reset(self):
         kf = self.keyframes["rest"]

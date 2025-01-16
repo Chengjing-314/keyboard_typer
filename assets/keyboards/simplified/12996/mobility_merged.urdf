@@ -1,0 +1,3504 @@
+<?xml version='1.0' encoding='ASCII'?>
+<robot name="full108keyboard">
+  <link name="base"/>
+  <link name="link_0">
+    <visual name="frame-1">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-106.obj"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_0.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_1">
+    <visual name="key-2">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-70.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-2">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-289.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-2">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-288.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-2">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-287.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_1.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_2">
+    <visual name="key-3">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-24.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-3">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-206.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-3">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-205.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_2.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_3">
+    <visual name="key-4">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-79.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-4">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-208.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-4">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-207.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_3.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_4">
+    <visual name="key-5">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-38.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-5">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-210.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-5">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-209.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_4.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_5">
+    <visual name="key-6">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-64.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-6">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-211.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-6">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-212.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_5.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_6">
+    <visual name="key-7">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-20.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-7">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-213.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-7">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-214.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_6.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_7">
+    <visual name="key-8">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-51.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-8">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-290.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-8">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-291.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_7.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_8">
+    <visual name="key-9">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-293.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-9">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-292.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-9">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-69.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_8.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_9">
+    <visual name="key-10">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-294.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-10">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-52.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-10">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-145.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_9.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_10">
+    <visual name="key-11">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-147.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-11">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-78.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-11">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-146.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_10.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_11">
+    <visual name="key-12">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-286.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-12">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-285.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-12">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-284.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-12">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-81.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_11.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_12">
+    <visual name="key-13">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-283.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-13">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-282.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-13">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-18.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-13">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-281.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_12.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_13">
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-133.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-137.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-136.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-135.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-131.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-132.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-14">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-32.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_13.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_14">
+    <visual name="key-15">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-127.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-15">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-128.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-15">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-129.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-15">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-130.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-15">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-49.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_14.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_15">
+    <visual name="key-16">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-138.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-16">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-139.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-16">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-140.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-16">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-61.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_15.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_16">
+    <visual name="key-17">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-134.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-17">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-261.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-17">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-126.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-17">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-27.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_16.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_17">
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-258.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-259.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-227.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-318.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-228.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-257.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-260.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-320.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-18">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-10.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_17.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_18">
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-312.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-322.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-229.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-230.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-323.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-321.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-19">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-41.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_18.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_19">
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-314.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-311.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-310.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-309.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-316.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-315.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-317.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-256.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-255.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-313.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-20">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-22.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_19.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_20">
+    <visual name="key-21">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-307.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-21">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-308.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-21">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-306.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-21">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-305.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-21">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-74.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_20.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_21">
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-303.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-304.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-300.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-301.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-299.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-47.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-22">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-302.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_21.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_22">
+    <visual name="key-23">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-43.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-23">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-113.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_22.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_23">
+    <visual name="key-24">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-84.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-24">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-231.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_23.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_24">
+    <visual name="key-25">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-232.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-25">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-21.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_24.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_25">
+    <visual name="key-26">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-233.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-26">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-73.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_25.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_26">
+    <visual name="key-27">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-234.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-27">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-36.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_26.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_27">
+    <visual name="key-28">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-14.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-28">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-108.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_27.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_28">
+    <visual name="key-29">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-17.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-29">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-226.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_28.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_29">
+    <visual name="key-30">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-31.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-30">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-280.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_29.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_30">
+    <visual name="key-31">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-26.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-31">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-279.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_30.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_31">
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-199.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-201.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-203.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-124.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-112.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-115.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-204.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-202.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-99.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-32">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-200.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_31.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_32">
+    <visual name="key-33">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-94.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-33">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-122.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_32.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_33">
+    <visual name="key-34">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-6.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-34">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-119.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_33.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_34">
+    <visual name="key-35">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-91.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-35">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-118.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_34.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_35">
+    <visual name="key-36">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-29.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-36">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-109.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_35.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_36">
+    <visual name="key-37">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-63.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-37">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-254.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_36.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_37">
+    <visual name="key-38">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-40.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-38">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-271.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_37.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_38">
+    <visual name="key-39">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-46.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-39">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-272.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_38.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_39">
+    <visual name="key-40">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-19.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-40">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-253.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_39.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_40">
+    <visual name="key-41">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-68.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-41">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-277.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_40.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_41">
+    <visual name="key-42">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-44.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-42">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-278.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-42">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-296.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_41.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_42">
+    <visual name="key-43">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-67.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-43">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-252.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_42.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_43">
+    <visual name="key-44">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-75.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-44">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-251.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_43.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_44">
+    <visual name="key-45">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-71.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-45">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-250.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_44.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_45">
+    <visual name="key-46">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-37.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-46">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-249.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_45.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_46">
+    <visual name="key-47">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-15.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-47">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-248.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_46.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_47">
+    <visual name="key-48">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-45.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-48">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-247.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_47.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_48">
+    <visual name="key-49">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-72.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-49">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-246.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_48.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_49">
+    <visual name="key-50">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-28.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-50">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-123.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_49.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_50">
+    <visual name="key-51">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-85.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-51">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-235.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_50.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_51">
+    <visual name="key-52">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-92.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-52">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-121.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_51.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_52">
+    <visual name="key-53">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-116.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-53">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-2.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_52.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_53">
+    <visual name="key-54">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-86.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-54">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-236.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_53.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_54">
+    <visual name="key-55">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-3.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-55">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-110.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_54.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_55">
+    <visual name="key-56">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-76.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-56">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-245.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_55.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_56">
+    <visual name="key-57">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-23.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-57">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-111.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_56.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_57">
+    <visual name="key-58">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-165.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-58">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-167.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-58">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-166.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-58">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-65.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_57.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_58">
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-181.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-176.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-177.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-178.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-180.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-102.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-59">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-179.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_58.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_59">
+    <visual name="key-60">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-62.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-60">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-244.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_59.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_60">
+    <visual name="key-61">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-33.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-61">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-243.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_60.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_61">
+    <visual name="key-62">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-34.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-62">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-242.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_61.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_62">
+    <visual name="key-63">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-25.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-63">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-241.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_62.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_63">
+    <visual name="key-64">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-16.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-64">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-240.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_63.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_64">
+    <visual name="key-65">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-56.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-65">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-239.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_64.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_65">
+    <visual name="key-66">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-50.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-66">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-238.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_65.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_66">
+    <visual name="key-67">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-90.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-67">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-276.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_66.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_67">
+    <visual name="key-68">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-8.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-68">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-275.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_67.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_68">
+    <visual name="key-69">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-154.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-69">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-153.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-69">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-152.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-69">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-155.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-69">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-66.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_68.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_69">
+    <visual name="key-70">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-157.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-70">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-87.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-70">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-156.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_69.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_70">
+    <visual name="key-71">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-42.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-71">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-158.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-71">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-159.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-71">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-161.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-71">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-160.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_70.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_71">
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-125.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-120.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-117.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-114.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-215.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-72">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-101.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_71.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_72">
+    <visual name="key-73">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-98.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-73">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-273.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_72.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_73">
+    <visual name="key-74">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-162.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-74">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-163.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-74">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-164.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-74">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-53.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_73.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_74">
+    <visual name="key-75">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-95.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_74.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_75">
+    <visual name="key-76">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-172.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-76">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-173.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-76">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-7.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-76">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-174.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-76">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-175.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_75.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_76">
+    <visual name="key-77">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-171.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-77">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-169.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-77">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-168.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-77">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-57.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-77">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-170.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_76.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_77">
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-188.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-185.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-182.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-184.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-183.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-186.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-187.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-189.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-78">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-96.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_77.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_78">
+    <visual name="key-79">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-97.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-79">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-191.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-79">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-190.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-79">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-192.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_78.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_79">
+    <visual name="key-80">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-35.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-80">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-237.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_79.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_80">
+    <visual name="key-81">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-60.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-81">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-270.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_80.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_81">
+    <visual name="key-82">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-297.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-82">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-295.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-82">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-298.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-82">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-88.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_81.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_82">
+    <visual name="key-83">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-54.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-83">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-143.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-83">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-142.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-83">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-141.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_82.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_83">
+    <visual name="key-84">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-77.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-84">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-319.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_83.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_84">
+    <visual name="key-85">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-269.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-85">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-89.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_84.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_85">
+    <visual name="key-86">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-5.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-86">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-268.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_85.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_86">
+    <visual name="key-87">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-105.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-87">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-267.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_86.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_87">
+    <visual name="key-88">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-12.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-88">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-216.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_87.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_88">
+    <visual name="key-89">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-80.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-89">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-217.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_88.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_89">
+    <visual name="key-90">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-11.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-90">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-218.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_89.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_90">
+    <visual name="key-91">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-221.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-91">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-39.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_90.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_91">
+    <visual name="key-92">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-83.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-92">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-220.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_91.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_92">
+    <visual name="key-93">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-13.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-93">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-219.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_92.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_93">
+    <visual name="key-94">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-48.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-94">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-224.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_93.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_94">
+    <visual name="key-95">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-30.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-95">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-223.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_94.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_95">
+    <visual name="key-96">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-82.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-96">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-222.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_95.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_96">
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-150.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-148.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-144.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-151.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-149.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-97">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-103.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_96.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_97">
+    <visual name="key-98">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-58.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-98">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-266.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_97.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_98">
+    <visual name="key-99">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-104.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-99">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-225.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_98.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_99">
+    <visual name="key-100">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-4.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-100">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-265.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_99.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_100">
+    <visual name="key-101">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-93.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-101">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-264.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_100.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_101">
+    <visual name="key-102">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-263.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-102">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-59.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_101.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_102">
+    <visual name="key-103">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-9.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-103">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-262.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_102.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_103">
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-198.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-197.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-193.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-195.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-194.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-100.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-104">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-196.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_103.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <link name="link_104">
+    <visual name="key-105">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-55.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <visual name="key-105">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/textured_objs/original-274.obj"/>
+      </geometry>
+      <origin xyz="-0.6971227771455217 -0.026195007834941664 0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    </visual>
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="/home/chengjing/Desktop/keyboard_typer/assets/keyboards/simplified/12996/merged_collision_meshes/merged_link_104.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
+  </link>
+  <joint name="joint_0" type="fixed">
+    <parent link="base"/>
+    <child link="link_0"/>
+    <origin xyz="0.0 0.0 0.0" rpy="1.570796326794897 -0.0 -1.570796326794897"/>
+    <axis xyz="1.0 0.0 0.0"/>
+  </joint>
+  <joint name="key_f10" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_1"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.001"/>
+  </joint>
+  <joint name="key_f9" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_2"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f8" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_3"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f7" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_4"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f6" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_5"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f5" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_6"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f4" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_7"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f3" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_8"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f2" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_9"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f1" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_10"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f11" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_11"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f12" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_12"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_insert" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_13"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_home" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_14"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_del" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_15"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_end" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_16"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_pagedown" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_17"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_pageup" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_18"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_pausebreak" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_19"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_scr" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_20"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_print" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_21"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_8_star" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_22"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_7_and" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_23"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_6_caret" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_24"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_5_percentage" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_25"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_4_dollar" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_26"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_9_openparenthesis" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_27"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_0_closeparenthesis" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_28"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_dash_underscore" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_29"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_equal_plus" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_30"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_backspace" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_31"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_t" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_32"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_y" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_33"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_u" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_34"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_i" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_35"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_o" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_36"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_closebracket" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_37"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_openbracket" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_38"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_p" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_39"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_apostrophe" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_40"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_semicolon_colon" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_41"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_l" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_42"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_k" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_43"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_j" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_44"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_h" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_45"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_g" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_46"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_f" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_47"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_d" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_48"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_r" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_49"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_3_pound" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_50"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_e" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_51"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_w" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_52"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_2_at" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_53"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_q" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_54"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_s" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_55"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_a" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_56"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_leftalt" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_57"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_shift" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_58"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_z" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_59"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_x" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_60"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_c" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_61"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_v" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_62"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_b" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_63"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_n" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_64"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_m" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_65"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_comma_less" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_66"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_period_greater" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_67"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_rightctl" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_68"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_rdot" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_69"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_rwin" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_70"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_enter" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_71"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_backslash" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_72"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_rightalt" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_73"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_space" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_74"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_leftctl" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_75"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_leftwin" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_76"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_capslock" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_77"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_tab" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_78"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_1_exclamation" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_79"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_tilda_backticks" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_80"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_esc" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_81"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numlock" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_82"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numfowardslash" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_83"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numstar" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_84"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numdash" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_85"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numplus" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_86"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num9" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_87"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num8" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_88"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num7" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_89"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num4" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_90"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num5" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_91"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num6" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_92"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num1" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_93"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num2" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_94"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num3" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_95"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numentere" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_96"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_numdot" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_97"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_num0" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_98"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_left" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_99"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_right" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_100"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_down" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_101"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_up" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_102"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_rightshift" type="fixed">
+    <parent link="link_0"/>
+    <child link="link_103"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+  <joint name="key_fowardslash_question" type="prismatic">
+    <parent link="link_0"/>
+    <child link="link_104"/>
+    <origin xyz="0.6971227771455217 0.026195007834941664 -0.023443437049389594" rpy="0.0 -0.0 0.0"/>
+    <axis xyz="0.0 -0.9980028559659031 -0.06316881733815055"/>
+    <limit lower="0.0" upper="0.015"/>
+  </joint>
+</robot>

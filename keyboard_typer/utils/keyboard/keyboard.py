@@ -27,6 +27,16 @@ class Keyboard:
         key_names = self.mapping_array[indices]
         return key_names, indices
 
+    def generate_t_time_step_key_press(self, time_steps, num_keys):
+        """Simulate t time step key presses and return key names and indices."""
+        batched_key_names = []
+        batched_indices = []
+        for _ in range(time_steps):
+            key_names, indices = self.generate_key_press(num_keys)
+            batched_key_names.append(key_names)
+            batched_indices.append(indices)
+        return batched_key_names, batched_indices
+
 
 class BlackKeyboard(Keyboard):
     def __init__(self, actuation_point=0.015):
