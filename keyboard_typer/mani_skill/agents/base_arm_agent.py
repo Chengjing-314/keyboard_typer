@@ -39,7 +39,8 @@ class RobotConstants:
     HAND_DOF: int = 6  # we use linear mimic joint for hand
 
     NORMALIZE_PDEE: bool = True
-    NORMALIZE_PD_HANDJOINT: bool = True
+    NORMALIZE_PD_ARMJOINT: bool = False
+    NORMALIZE_PD_HANDJOINT: bool = False
 
 
 @register_agent()
@@ -93,6 +94,8 @@ class XArm7AbilityBase(BaseAgent):
 
     visual_stack = []
 
+    disable_self_collisions = True
+
     @property
     def _controller_configs(self):
         arm_pd_joint_pos = PDJointPosControllerConfig(
@@ -102,6 +105,7 @@ class XArm7AbilityBase(BaseAgent):
             stiffness=self.constants.ARM_STIFFNESS,
             damping=self.constants.ARM_DAMPING,
             force_limit=self.constants.ARM_FORCE_LIMIT,
+            normalize_action=self.constants.NORMALIZE_PD_ARMJOINT,
         )
 
         arm_pd_pose_ee = PDEEPoseControllerConfig(

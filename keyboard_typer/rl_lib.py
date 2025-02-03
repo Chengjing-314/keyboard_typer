@@ -216,7 +216,7 @@ class DictArray:
 
 @dataclass
 class AgentConfig:
-    obs: Literal["state"] = "state"
+    obs: Literal["state"] = "state_dict"
 
     latent_dim: int | None = None
     load_from: str | None = None
@@ -226,8 +226,16 @@ class Agent(nn.Module):
     def __init__(self, config: AgentConfig, env: VectorEnv):
         super().__init__()
         self.config = config
-        if self.config.latent_dim is None:
+        if self.config.latent_dim is None and self.config.obs == "state":
             latent_dim = np.array(env.unwrapped.single_observation_space.shape).prod()
+        elif self.config.latent_dim is None and self.config.obs == "state_dict":
+            agent = [v.shape for v in env.unwrapped.single_observation_space["agent"].values()]
+            extra = [v.shape for v in env.unwrapped.single_observation_space["extra"].values()]
+
+            agent_dim = sum(v[0] if len(v) > 0 else 1 for v in agent)
+            extra_dim = sum(v[0] if len(v) > 0 else 1 for v in extra)
+            latent_dim = agent_dim + extra_dim
+
         else:
             latent_dim = self.config.latent_dim
 
@@ -296,7 +304,7 @@ class PPOConfig:
     num_eval_steps: int = MAX_EPISODE_STEPS
     num_minibatches: int = 32
     update_epochs: int = 8
-    eval_freq: int = 2
+    eval_freq: int = 8
 
     learning_rate: float = 3e-4
     anneal_lr: bool = False
@@ -309,9 +317,11 @@ class PPOConfig:
     clip_coef: float = 0.2
     clip_vloss: bool = False
     target_kl: float = 0.1
-    ent_coef: float = 0.0
+    ent_coef: float = 0.001
     vf_coef: float = 0.5
     max_grad_norm: float = 0.5
+
+    obs_mode = "state"
 
     def __post_init__(self):
         if self.exp_version is None:
@@ -427,8 +437,9 @@ class PPO:
                 failures = []
                 for i in range(self.config.num_eval_steps):
                     with torch.no_grad():
+                        action = self.agent.get_action(eval_obs, deterministic=True)
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
-                            self.eval_env.step(self.agent.get_action(eval_obs, deterministic=True))
+                            self.eval_env.step(action)
                         )
                         if "final_info" in eval_infos:
                             mask = eval_infos["_final_info"]
@@ -513,7 +524,6 @@ class PPO:
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
-                __import__("IPython").embed(header="rl_lib.py:517")
                 next_done = torch.logical_or(terminations, truncations).to(torch.float32)
                 rewards[step] = reward.view(-1)
 
@@ -760,9 +770,9 @@ class PPO_typer(PPO):
 
     def get_reward_detail(self, eval=False):
         if eval:
-            reward_dict = self.eval_env._env.get_reward_details()
+            reward_dict = self.eval_env._env.unwrapped.get_reward_details()
         else:
-            reward_dict = self.env._env.get_reward_details()
+            reward_dict = self.env._env.unwrapped.get_reward_details()
 
         return reward_dict
 
@@ -779,6 +789,36 @@ class PPO_typer(PPO):
         self.key_actuation_reward += reward_dict["key_actuation_reward"]
         self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
         self.velocity_penalty += reward_dict["velocity_penalty"]
+
+    def process_obs(self, obs: dict):
+        agent_dict = obs["agent"]
+        extra_dict = obs["extra"]
+
+        # normalization to [-1, 1]
+        qlimits = self.env._env.unwrapped.agent.robot.qlimits[0]  # dof * 2
+        agent_dict["qpos"] = (
+            2 * (agent_dict["qpos"] - qlimits[:, 0]) / (qlimits[:, 1] - qlimits[:, 0]) - 1
+        )
+
+        # torch concat
+        agent_tensor = [v for v in agent_dict.values()]
+        extra_tensor = [v.unsqueeze(-1) if v.ndim == 1 else v for v in extra_dict.values()]
+
+        return torch.cat(agent_tensor + extra_tensor, dim=-1).float()
+
+    def normalize_qpos(self, obs: torch.Tensor):
+        qlimits_low, qlimits_high = (
+            self.env._env.unwrapped.agent.robot.qlimits[0][:, 0],
+            self.env._env.unwrapped.agent.robot.qlimits[0][:, 1],
+        )
+
+        obs[:, : self.env.unwrapped.single_action_space.shape[0]] = (
+            2
+            * (obs[:, : self.env.unwrapped.single_action_space.shape[0]] - qlimits_low)
+            / (qlimits_high - qlimits_low)
+        )
+
+        return obs
 
     def train(self, seed: int = 0):
         random.seed(seed)
@@ -826,6 +866,10 @@ class PPO_typer(PPO):
         start_time = time.time()
         next_obs, _ = self.env.reset(seed=seed)
         eval_obs, _ = self.eval_env.reset(seed=seed)
+
+        # next_obs = self.normalize_qpos(next_obs)
+        # eval_obs = self.normalize_qpos(eval_obs)
+
         next_done = torch.zeros(self.env.num_envs, device=self.device)
         eps_lens = np.zeros(self.env.num_envs)
         console.rule()
@@ -862,9 +906,11 @@ class PPO_typer(PPO):
                 failures = []
                 for i in range(self.config.num_eval_steps):
                     with torch.no_grad():
+                        action = self.agent.get_action(eval_obs, deterministic=True)
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
-                            self.eval_env.step(self.agent.get_action(eval_obs, deterministic=True))
+                            self.eval_env.step(action)
                         )
+                        # eval_obs = self.normalize_qpos(eval_obs)
                         if "final_info" in eval_infos:
                             mask = eval_infos["_final_info"]
                             eps_lens.append(
@@ -951,6 +997,7 @@ class PPO_typer(PPO):
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
+                # next_obs = self.normalize_qpos(next_obs)
                 next_done = torch.logical_or(terminations, truncations).to(torch.float32)
                 rewards[step] = reward.view(-1)
 

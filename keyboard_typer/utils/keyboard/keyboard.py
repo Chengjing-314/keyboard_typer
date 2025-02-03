@@ -17,22 +17,39 @@ class Keyboard:
         self.mapping = {}
         self.mapping_array = np.array([])
 
-    def get_key(self, key_name):
-        """Retrieve the key value for a given key name."""
+    def get_mapped_key(self, key_name: str):
+        """Retrieve the mapped value for a given key name."""
         return self.mapping.get(key_name)
 
-    def generate_key_press(self, num_keys):
-        """Simulate key presses and return key names and indices."""
-        indices = np.random.choice(len(self.mapping_array), num_keys, replace=True)
+    def simulate_key_presses(self, num_envs: int):
+        """
+        Simulate key presses for multiple environments.
+
+        Args:
+            num_envs (int): Number of environments for which to simulate key presses.
+
+        Returns:
+            tuple: Simulated key names and their corresponding indices.
+        """
+        indices = np.random.choice(len(self.mapping_array), num_envs, replace=True)
         key_names = self.mapping_array[indices]
         return key_names, indices
 
-    def generate_t_time_step_key_press(self, time_steps, num_keys):
-        """Simulate t time step key presses and return key names and indices."""
+    def simulate_key_presses_over_time(self, time_steps: int, num_envs: int):
+        """
+        Simulate key presses over multiple time steps for multiple environments.
+
+        Args:
+            time_steps (int): Number of time steps for simulation.
+            num_envs (int): Number of environments per time step.
+
+        Returns:
+            tuple: Batched key names and indices for all time steps.
+        """
         batched_key_names = []
         batched_indices = []
         for _ in range(time_steps):
-            key_names, indices = self.generate_key_press(num_keys)
+            key_names, indices = self.simulate_key_presses(num_envs)
             batched_key_names.append(key_names)
             batched_indices.append(indices)
         return batched_key_names, batched_indices

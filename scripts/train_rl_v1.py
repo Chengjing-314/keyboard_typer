@@ -16,6 +16,7 @@ class Args:
     num_envs: int = 512
     num_eval_envs: int = 2
     seed: int = 0
+    obs_mode: str = "state"
     typer_config: TyperEnvConfig = field(default_factory=lambda: TyperEnvConfig())
     agent_config: AgentConfig = field(default_factory=lambda: AgentConfig())
     exp_name: str = "TyperEnv"
@@ -33,16 +34,23 @@ if __name__ == "__main__":
     args = tyro.cli(Args)
 
     args.trainer.exp_name = args.exp_name
+    args.trainer.obs_mode = args.obs_mode
+    args.agent_config.obs = args.obs_mode
+    # args.agent_config.load_from = (
+    #     "/home/chengjing/Desktop/keyboard_typer/logs/stage_0_scratch/ckpts/ckpt_169.pt"
+    # )
 
     # env setup
     env_kwargs = dict(
-        obs_mode="state",
+        obs_mode=args.obs_mode,
         control_mode="pd_joint_pos",
         render_mode="rgb_array",
         sim_backend="gpu",
     )
     env = gym.make(args.env_id, config=args.typer_config, num_envs=args.num_envs, **env_kwargs)
-    eval_env = gym.make(args.env_id, num_envs=args.num_eval_envs, **env_kwargs)
+    eval_env = gym.make(
+        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **env_kwargs
+    )
     if isinstance(env.action_space, gym.spaces.Dict):
         env = FlattenActionSpaceWrapper(env)
         eval_env = FlattenActionSpaceWrapper(eval_env)
