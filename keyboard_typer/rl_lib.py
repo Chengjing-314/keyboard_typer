@@ -217,7 +217,6 @@ class DictArray:
 @dataclass
 class AgentConfig:
     obs: Literal["state"] = "state_dict"
-
     latent_dim: int | None = None
     load_from: str | None = None
 
@@ -228,17 +227,8 @@ class Agent(nn.Module):
         self.config = config
         if self.config.latent_dim is None and self.config.obs == "state":
             latent_dim = np.array(env.unwrapped.single_observation_space.shape).prod()
-        elif self.config.latent_dim is None and self.config.obs == "state_dict":
-            agent = [v.shape for v in env.unwrapped.single_observation_space["agent"].values()]
-            extra = [v.shape for v in env.unwrapped.single_observation_space["extra"].values()]
-
-            agent_dim = sum(v[0] if len(v) > 0 else 1 for v in agent)
-            extra_dim = sum(v[0] if len(v) > 0 else 1 for v in extra)
-            latent_dim = agent_dim + extra_dim
-
         else:
             latent_dim = self.config.latent_dim
-
         self.critic = nn.Sequential(
             layer_init(nn.Linear(latent_dim, 256)),
             nn.Tanh(),
@@ -303,7 +293,7 @@ class PPOConfig:
     num_steps: int = MAX_EPISODE_STEPS
     num_eval_steps: int = MAX_EPISODE_STEPS
     num_minibatches: int = 32
-    update_epochs: int = 8
+    update_epochs: int = 4
     eval_freq: int = 8
 
     learning_rate: float = 3e-4
@@ -317,7 +307,7 @@ class PPOConfig:
     clip_coef: float = 0.2
     clip_vloss: bool = False
     target_kl: float = 0.1
-    ent_coef: float = 0.001
+    ent_coef: float = 0.0
     vf_coef: float = 0.5
     max_grad_norm: float = 0.5
 
@@ -782,6 +772,7 @@ class PPO_typer(PPO):
         self.key_actuation_reward = 0
         self.rotation_distance_reward = 0
         self.velocity_penalty = 0
+        self.wrong_key_penalty = 0
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
@@ -789,6 +780,7 @@ class PPO_typer(PPO):
         self.key_actuation_reward += reward_dict["key_actuation_reward"]
         self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
         self.velocity_penalty += reward_dict["velocity_penalty"]
+        self.wrong_key_penalty += reward_dict["wrong_key_penalty"]
 
     def process_obs(self, obs: dict):
         agent_dict = obs["agent"]
@@ -1228,6 +1220,8 @@ class PPO_typer(PPO):
                         "rewards/rotation_distance": self.rotation_distance_reward
                         / self.config.num_steps,
                         "rewards/velocity_penalty": self.velocity_penalty / self.config.num_steps,
+                        "rewards/wrong_key_penalty": self.wrong_key_penalty
+                        / self.config.num_steps,
                     },
                     step=global_step,
                 )

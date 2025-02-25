@@ -132,6 +132,10 @@ class BlackKeyboard(Keyboard):
             "key_fowardslash_question": "/",
         }
 
+    def simulate_key_presses_word(self, word: str, num_envs: int):
+        # TODO: implement word to key mapping
+        pass
+
     @staticmethod
     def _load_bounding_box():
         """Load bounding box data."""
@@ -181,7 +185,6 @@ class BlackKeyboard(Keyboard):
 def main():
     kb = BlackKeyboard()
     print(len(kb.mapping_array))
-    print(kb.generate_key_press(10))
 
 
 if __name__ == "__main__":

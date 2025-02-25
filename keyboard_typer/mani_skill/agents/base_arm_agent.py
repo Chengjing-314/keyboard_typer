@@ -108,6 +108,28 @@ class XArm7AbilityBase(BaseAgent):
             normalize_action=self.constants.NORMALIZE_PD_ARMJOINT,
         )
 
+        arm_pd_delta_pos = PDJointPosControllerConfig(
+            self.arm_joint_names,
+            lower=None,
+            upper=None,
+            stiffness=self.constants.ARM_STIFFNESS,
+            damping=self.constants.ARM_DAMPING,
+            force_limit=self.constants.ARM_FORCE_LIMIT,
+            normalize_action=self.constants.NORMALIZE_PD_ARMJOINT,
+            use_delta=True,
+        )
+
+        hand_pd_delta_pos = PDJointPosControllerConfig(
+            self.hand_joint_names,
+            lower=None,
+            upper=None,
+            stiffness=self.constants.HAND_STIFFNESS,
+            damping=self.constants.HAND_DAMPING,
+            force_limit=50,
+            normalize_action=self.constants.NORMALIZE_PD_HANDJOINT,
+            use_delta=True,
+        )
+
         arm_pd_pose_ee = PDEEPoseControllerConfig(
             joint_names=self.arm_joint_names,
             pos_lower=self.constants.ARM_POSE_PD_EE_POS_LOWER,
@@ -134,10 +156,15 @@ class XArm7AbilityBase(BaseAgent):
 
         controller_configs = dict(
             pd_joint_pos=dict(arm=arm_pd_joint_pos, hand=hand_pd_joint_pos),
+            pd_joint_delta_pos=dict(arm=arm_pd_delta_pos, hand=hand_pd_delta_pos),
             arm_pd_ee_pose_hand_pd_joint_pos=dict(arm=arm_pd_pose_ee, hand=hand_pd_joint_pos),
         )
 
         return copy.deepcopy(controller_configs)
+
+    def is_static(self, threshold=1e-2):
+        qvel = self.robot.get_qvel()[..., :-10]
+        return torch.max(torch.abs(qvel), dim=-1)[0] < threshold
 
     def _after_init(self):
         hand_primary_link_names = [

@@ -46,6 +46,7 @@ def create_keyboard(scene: sapien.Scene, kb_manager: Keyboard, config: TyperEnvB
             config.keyboard_initial_pose[0],
             config.keyboard_initial_pose[1],
             config.keyboard_initial_pose[2] * scale * kb_manager.kb_height,
+            # + 1.0,  # FIXME: Testing only
         ],
         device=device,
     )
@@ -102,8 +103,12 @@ class TyperBaseEnv(BaseEnv):
     def _initialize_episode(self, env_idx: torch.Tensor, options: dict):
         self.table_scene.initialize(env_idx)
         num_envs = len(env_idx)
+
+        # We observed some keys will drop and maintain at 0.001 instead of 0, we set activation threshold to 0.002 to just be safe
+        # when kp go beyond 40, the contact between the hand and the key is unstable
+
         for ac_joint in self.keyboard.get_active_joints():
-            ac_joint.set_drive_properties(stiffness=40.0, damping=5.0)
+            ac_joint.set_drive_properties(stiffness=20.0, damping=2.0)
         active_joints = self.keyboard.get_active_joints()
         if self.num_envs > 1:
             self.keyboard.set_joint_drive_targets(
@@ -126,8 +131,8 @@ class TyperBaseEnv(BaseEnv):
 
         self.time_step = 0
 
-        self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
-        self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        # self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        # self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
 
     @property
     def _default_human_render_camera_configs(self):
