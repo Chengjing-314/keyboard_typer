@@ -346,7 +346,7 @@ class XArm7AbilityRight(XArm7AbilityBase):
     )
     keyframes = dict(
         rest=Keyframe(
-            pose=sapien.Pose([0, 0.4, 0], [1, 0, 0, 0]),
+            pose=sapien.Pose([0, -0.4, 0], [1, 0, 0, 0]),
             qpos=np.array(
                 [
                     -0.03141593,
@@ -371,7 +371,7 @@ class XArm7AbilityLeft(XArm7AbilityBase):
     )
     keyframes = dict(
         rest=Keyframe(
-            pose=sapien.Pose([0, -0.4, 0], [1, 0, 0, 0]),
+            pose=sapien.Pose([0, 0.4, 0], [1, 0, 0, 0]),
             qpos=np.array(
                 [
                     -0.03141593,

@@ -773,6 +773,7 @@ class PPO_typer(PPO):
         self.rotation_distance_reward = 0
         self.velocity_penalty = 0
         self.wrong_key_penalty = 0
+        self.hand_qpos_reward = 0
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
@@ -781,6 +782,7 @@ class PPO_typer(PPO):
         self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
         self.velocity_penalty += reward_dict["velocity_penalty"]
         self.wrong_key_penalty += reward_dict["wrong_key_penalty"]
+        self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
 
     def process_obs(self, obs: dict):
         agent_dict = obs["agent"]
@@ -1222,6 +1224,7 @@ class PPO_typer(PPO):
                         "rewards/velocity_penalty": self.velocity_penalty / self.config.num_steps,
                         "rewards/wrong_key_penalty": self.wrong_key_penalty
                         / self.config.num_steps,
+                        "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
                     },
                     step=global_step,
                 )
@@ -1236,6 +1239,58 @@ class PPO_typer(PPO):
             )
             torch.save(self.agent.state_dict(), model_path)
             console.log(f"model saved to {model_path}")
+
+    def evaluate(self, save_traj=False):
+        eval_obs, _ = self.eval_env.reset()
+        returns = []
+        return_components = {}
+        eps_lens = []
+        successes = []
+        failures = []
+        if save_traj:
+            traj = []
+        for i in range(self.config.num_eval_steps):
+            with torch.no_grad():
+                action = self.agent.get_action(eval_obs, deterministic=True)
+                eval_obs, _, eval_terminations, eval_truncations, eval_infos = self.eval_env.step(
+                    action
+                )
+                traj.append(self.eval_env.unwrapped.agent.robot.qpos.cpu().numpy())
+                if "final_info" in eval_infos:
+                    mask = eval_infos["_final_info"]
+                    eps_lens.append(eval_infos["final_info"]["elapsed_steps"][mask].cpu().numpy())
+                    returns.append(eval_infos["final_info"]["episode"]["r"][mask].cpu().numpy())
+                    if "reward_components" in eval_infos["final_info"]:
+                        for key, value in eval_infos["final_info"]["episode"][
+                            "r_components"
+                        ].items():
+                            if key not in return_components:
+                                return_components[key] = []
+                            return_components[key].append(value[mask].cpu().numpy())
+                    if "success" in eval_infos:
+                        successes.append(eval_infos["final_info"]["success"][mask].cpu().numpy())
+                    if "fail" in eval_infos:
+                        failures.append(eval_infos["final_info"]["fail"][mask].cpu().numpy())
+        returns = np.concatenate(returns)
+        return_components = {
+            key: np.concatenate(value) for key, value in return_components.items()
+        }
+        eps_lens = np.concatenate(eps_lens)
+        console.log(
+            f"Evaluated {self.config.num_eval_steps * self.eval_env.num_envs} steps resulting in {len(eps_lens)} episodes"
+        )
+        if len(successes) > 0:
+            successes = np.concatenate(successes)
+        console.log(f"eval_success_rate={successes.mean()}")
+        console.log(f"eval_episodic_return={returns.mean()}")
+        for key, value in return_components.items():
+            console.log(f"eval_episodic_return_{key}={value.mean()}")
+
+        if save_traj:
+            np.save(
+                os.path.join(self.config.exp_root, self.config.exp_name, "traj.npy"),
+                np.array(traj),
+            )
 
     def log_extra(self, global_step):
         pass

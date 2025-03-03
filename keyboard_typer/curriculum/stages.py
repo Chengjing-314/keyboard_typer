@@ -45,7 +45,11 @@ class StageHandler(Stage):
             num_envs, 1, 1
         ) + keyboard_pos.repeat(num_envs, 1, 1)
 
-        target_finger = torch.randint(1, 2, (num_envs,), device=device)
+        # target_finger = torch.randint(1, 2, (num_envs,), device=device)
+
+        target_finger = torch.randint(
+            1, 2, (num_envs, num_chars), device=device
+        )  # FIXME: only training for 1 finger
 
         self.target_key_press, self.target_key_indices = kb_manager.simulate_key_presses_over_time(
             num_chars, num_envs
@@ -64,7 +68,7 @@ class StageHandler(Stage):
         self.target_key_pos = target_key_pos[:, 0]
 
         finger_tip_pos = agent.get_finger_tip_pos(flatten=False)
-        target_finger_pos = finger_tip_pos[torch.arange(num_envs), target_finger]
+        target_finger_pos = finger_tip_pos[torch.arange(num_envs), target_finger[:, 0]]
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(self.target_key_pos))
@@ -81,7 +85,9 @@ class StageHandler(Stage):
         keyboard_qpos: torch.Tensor,
     ):
         num_envs = len(finger_tip_pos)
-        target_finger_pos = finger_tip_pos[torch.arange(num_envs), target_finger]
+
+        current_target_finger = target_finger[torch.arange(num_envs), key_press_progress]
+        target_finger_pos = finger_tip_pos[torch.arange(num_envs), current_target_finger]
 
         current_target_key_pos = target_key_pos[
             torch.arange(num_envs),
@@ -90,9 +96,6 @@ class StageHandler(Stage):
 
         tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
 
-        one_step_look_ahead_key_pos = torch.zeros_like(
-            current_target_key_pos, device=current_target_key_pos.device
-        )
         mask = key_press_progress < num_chars - 1
         next_key_press_progress = key_press_progress.clone()
 
@@ -100,17 +103,24 @@ class StageHandler(Stage):
 
         batch_idx = torch.arange(num_envs, device=target_key_pos.device)
         one_step_look_ahead_key_pos = torch.zeros_like(current_target_key_pos)
+        one_step_look_ahead_finger_idx = torch.zeros_like(
+            current_target_finger, device=current_target_finger.device
+        )  # This might need to change if we add thumb as it is index 0
 
         one_step_look_ahead_key_pos[mask] = target_key_pos[
             batch_idx[mask],
             next_key_press_progress[mask],
         ]
 
+        one_step_look_ahead_finger_idx[mask] = target_finger[
+            batch_idx[mask],
+            next_key_press_progress[mask],
+        ]
+
         obs = dict(
-            # target_finger_idx=target_finger.unsqueeze(-1),
-            # finger_tip_pos=finger_tip_pos_flat,
+            target_finger_idx=current_target_finger,
+            one_step_look_ahead_finger_idx=one_step_look_ahead_finger_idx,
             target_finger_pos=target_finger_pos,
-            # target_key_idx=self.target_key_indices.squeeze(-1), This line has problem
             current_target_key_pos=current_target_key_pos,
             one_step_look_ahead_key_pos=one_step_look_ahead_key_pos,
             keyboard_qpos=keyboard_qpos,
@@ -127,14 +137,20 @@ class StageHandler(Stage):
         target_finger,
         target_key_pos,
         target_key_indices,
+        qpos,
         qvel,
         tcp_viz,
         goal_viz,
         keyboard_qpos,
         key_default_qpos,
+        desired_hand_qpos,
     ):
         num_envs = len(finger_tip_pos)
-        target_finger_pos = finger_tip_pos[torch.arange(num_envs), target_finger]
+        current_target_finger = target_finger[
+            torch.arange(num_envs),
+            key_press_progress,
+        ]
+        target_finger_pos = finger_tip_pos[torch.arange(num_envs), current_target_finger]
         current_target_key_pos = target_key_pos[
             torch.arange(num_envs),
             key_press_progress,
@@ -143,12 +159,16 @@ class StageHandler(Stage):
 
         tcp_distance_reward = 1 - torch.tanh(5 * tcp_distance)
 
-        qvel_arm_only = qvel[:, :7]
-        qvel_penalty = 1 - torch.tanh(5 * torch.norm(qvel_arm_only, dim=-1))
-        is_close = tcp_distance < 0.05
-        qvel_penalty = qvel_penalty * is_close
+        hand_qpos = qpos[:, -10:]
 
-        time_penalty = -0.05  # constant time penalty to encourage faster key presses
+        hand_qpos_reward = -torch.tanh(
+            0.25 * torch.norm(hand_qpos - desired_hand_qpos.unsqueeze(0), dim=-1)
+        )
+
+        qvel_arm_only = qvel[:, :7]
+        qvel_penalty = -torch.tanh(0.03 * torch.norm(qvel_arm_only, dim=-1))
+
+        # time_penalty = -0.01  # constant time penalty to encourage faster key presses
 
         current_target_key_indices = target_key_indices[
             torch.arange(num_envs),
@@ -156,7 +176,7 @@ class StageHandler(Stage):
         ]
         target_key_qpos = keyboard_qpos[torch.arange(num_envs), current_target_key_indices]
         press_ratio = (target_key_qpos - key_default_qpos) / ((0.002 - key_default_qpos) + 1e-6)
-        key_actuation_reward = torch.tanh(press_ratio)
+        key_actuation_reward = 2 * torch.tanh(press_ratio)
 
         num_keys = keyboard_qpos.shape[1]
         all_key_indices = torch.arange(num_keys, device=target_key_indices.device).repeat(
@@ -168,19 +188,20 @@ class StageHandler(Stage):
             torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
         ]
         non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
-        non_target_activation_penality = non_target_key_activation_count * -0.5
+        non_target_activation_penality = non_target_key_activation_count * -0.2
 
         reward = (
             tcp_distance_reward
-            + qvel_penalty
-            + time_penalty
-            + key_actuation_reward
-            + non_target_activation_penality
+            # + qvel_penalty
+            # + time_penalty
+            # + key_actuation_reward
+            # + non_target_activation_penality
+            + hand_qpos_reward
         )
 
-        reward[info["success"]] = 10
+        reward[info["success"]] = 20
 
-        reward /= 3  # normalize reward
+        reward /= 4  # normalize reward
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
@@ -189,9 +210,13 @@ class StageHandler(Stage):
             tcp_distance_reward=tcp_distance_reward.mean(dim=-1).item(),
             over_all_distance_reward=0,  # Placeholder
             rotation_distance_reward=0,  # Placeholder
-            key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
-            velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
-            wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
+            # key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
+            key_actuation_reward=0,
+            # velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
+            velocity_penalty=0,
+            # wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
+            wrong_key_penalty=0,
+            hand_qpos_reward=hand_qpos_reward.mean(dim=-1).item(),
         )
 
         return reward, reward_dict

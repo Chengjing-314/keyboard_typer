@@ -8,7 +8,7 @@ from keyboard_typer.constants import ASSETS_ROOT
 @dataclass
 class KeyboardConfig:
     keyboard_name: str = "black"
-    actuation_point: float = 0.015
+    actuation_point: float = 0.015  # Deprecated property
 
 
 class Keyboard:

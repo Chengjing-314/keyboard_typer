@@ -13,8 +13,7 @@ from keyboard_typer.rl_lib import PPO_typer, PPOConfig, Agent, AgentConfig, Mani
 @dataclass
 class Args:
     env_id: str = "TyperEnv-v0"
-    num_envs: int = 512
-    num_eval_envs: int = 16
+    num_eval_envs: int = 1
     seed: int = 0
     obs_mode: str = "state"
     typer_config: TyperEnvConfig = field(default_factory=lambda: TyperEnvConfig())
@@ -38,25 +37,7 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    # args.agent_config.load_from = (
-    #     "/home/chengjing/Desktop/keyboard_typer/logs/with_actuation_new_obs/ckpts/ckpt_11.pt"
-    # )
-
-    # args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/with_actuation_obs_fixed_actuation_press/ckpts/ckpt_91.pt"
-
-    # args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/with_qpos_reward_3_char_cont_qpos_penality/ckpts/ckpt_121.pt"
-
-    args.agent_config.load_from = (
-        "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy/ckpts/ckpt_31.pt"
-    )
-
-    # env setup
-    train_env_kwargs = dict(
-        obs_mode=args.obs_mode,
-        control_mode="pd_joint_delta_pos",
-        render_mode="rgb_array",
-        sim_backend="gpu",
-    )
+    args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy_cont_w_vpen/ckpts/ckpt_121.pt"
 
     eval_env_kwargs = dict(
         obs_mode=args.obs_mode,
@@ -64,16 +45,17 @@ if __name__ == "__main__":
         render_mode="rgb_array",
         sim_backend="gpu",
     )
-    env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_envs, **train_env_kwargs
+
+    fake_env = gym.make(
+        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **eval_env_kwargs
     )
+    if isinstance(fake_env.action_space, gym.spaces.Dict):
+        fake_env = FlattenActionSpaceWrapper(fake_env)
+
     eval_env = gym.make(
         args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **eval_env_kwargs
     )
-    # env = gym.make(args.env_id, num_envs=args.num_envs, **env_kwargs)
-    # eval_env = gym.make(args.env_id, num_envs=args.num_eval_envs, **env_kwargs)
-    if isinstance(env.action_space, gym.spaces.Dict):
-        env = FlattenActionSpaceWrapper(env)
+    if isinstance(eval_env.action_space, gym.spaces.Dict):
         eval_env = FlattenActionSpaceWrapper(eval_env)
 
     eval_output_dir = os.path.join(args.trainer.exp_root, args.trainer.exp_name, "eval_videos")
@@ -86,16 +68,15 @@ if __name__ == "__main__":
         max_steps_per_video=args.trainer.num_eval_steps,
         video_fps=30,
     )
-    env = ManiSkillVectorEnv(env, args.num_envs, **train_env_kwargs)
-    eval_env = ManiSkillVectorEnv(eval_env, args.num_eval_envs, **eval_env_kwargs)
-    assert isinstance(env.single_action_space, gym.spaces.Box), (
-        "only continuous action space is supported"
+    eval_env = ManiSkillVectorEnv(
+        eval_env, args.num_eval_envs, ignore_terminations=True, **eval_env_kwargs
     )
+    fake_env = ManiSkillVectorEnv(fake_env, args.num_eval_envs, **eval_env_kwargs)
 
-    agent = Agent(args.agent_config, env)
+    agent = Agent(args.agent_config, eval_env)
 
-    trainer = PPO_typer(config=args.trainer, agent=agent, env=env, eval_env=eval_env)
-    trainer.train(seed=args.seed)
+    trainer = PPO_typer(config=args.trainer, agent=agent, env=fake_env, eval_env=eval_env)
 
-    env.close()
+    trainer.evaluate(save_traj=True)
+
     eval_env.close()

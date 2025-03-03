@@ -32,7 +32,7 @@ class TyperEnvBaseConfig:
 def create_keyboard(scene: sapien.Scene, kb_manager: Keyboard, config: TyperEnvBaseConfig, device):
     urdf_path = f"{ASSETS_ROOT}/keyboards/simplified/12996/mobility_merged.urdf"
 
-    scale = kb_manager.get_scale(0.45)
+    scale = kb_manager.get_scale(0.44)  # The longest side is 0.44
     kb_manager.scale = scale
 
     builder = scene.create_urdf_loader()
@@ -46,7 +46,6 @@ def create_keyboard(scene: sapien.Scene, kb_manager: Keyboard, config: TyperEnvB
             config.keyboard_initial_pose[0],
             config.keyboard_initial_pose[1],
             config.keyboard_initial_pose[2] * scale * kb_manager.kb_height,
-            # + 1.0,  # FIXME: Testing only
         ],
         device=device,
     )
@@ -118,7 +117,9 @@ class TyperBaseEnv(BaseEnv):
                 ),
             )
 
-        self.keyboard_pos = self.keyboard_initial_pose
+        self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
+            [0, 0, 0.05], device=self.device
+        )
         self.keyboard.set_pose(Pose.create_from_pq(self.keyboard_pos))
 
         self.keyboard.set_qpos(torch.zeros((num_envs, self.keyboard.dof[0]), device=self.device))
@@ -137,12 +138,14 @@ class TyperBaseEnv(BaseEnv):
     @property
     def _default_human_render_camera_configs(self):
         pose_1 = Pose.create_from_pq(
-            p=[0.303772, -0.00858272, 0.394293], q=[0.821503, 0.00156823, 0.570198, -0.0022596]
+            p=[0.303772, -0.10858272, 0.394293], q=[0.821503, 0.00156823, 0.570198, -0.0022596]
         )
-
         pose_2 = Pose.create_from_pq(
-            p=[0.712071, 0.0722968, 0.148511], q=[0.0192958, -0.0189956, 0.000362143, 0.999633]
+            p=[0.597359, -0.0656287, 0.53965], q=[0.00287366, -0.334428, 0.00101589, 0.942416]
         )
+        # pose_2 = Pose.create_from_pq(
+        #     p=[0.712071, 0.0022968, 0.148511], q=[0.0192958, -0.0189956, 0.000362143, 0.999633]
+        # )
 
         return [
             CameraConfig(
@@ -150,7 +153,7 @@ class TyperBaseEnv(BaseEnv):
                 pose=pose_2,
                 width=512,
                 height=512,
-                fov=1.36,
+                fov=1.71,
                 near=0.1,
                 far=100,
             ),

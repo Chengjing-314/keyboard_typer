@@ -25,7 +25,7 @@ class TyperEnvConfig(TyperEnvBaseConfig):
     keyboard_initial_pose: list = field(
         default_factory=lambda: [
             0.3,
-            0.1,
+            -0.1,
             0.5,
         ]
     )  # Relative values, Z will scale with kb_height
@@ -39,11 +39,17 @@ class TyperEnv(TyperBaseEnv):
         self.target_key_pos = None
         self.target_finger = None
         self.key_default_qpos = None
-        self.num_chars = 2
+        self.num_chars = 3
         super().__init__(*args, config=config, robot_uids="", **kwargs)
 
     def _initialize_episode(self, env_idx, options):
         super()._initialize_episode(env_idx, options)
+        hand_qlimits = self.agent.get_joint_limits()[-10:, :]
+        low, high = hand_qlimits[:, 0], hand_qlimits[:, 1]
+        temp_desired_qpos = low + (high - low) * 1 / 3
+        temp_desired_qpos[0] = low[0] + (high[0] - low[0])
+        temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
+        self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
         if self.stage in self.handlers:
             if self.target_key_pos is None:
                 self.target_key_pos, self.target_finger, self.target_key_indices = self.handlers[
@@ -103,6 +109,7 @@ class TyperEnv(TyperBaseEnv):
         if self.stage in self.handlers:
             finger_tip_pos = self.agent.get_finger_tip_pos(flatten=False)
             qvel = self.agent.robot.qvel
+            qpos = self.agent.robot.qpos
             keyboard_qpos = self.keyboard.qpos
             reward, self.reward_dict = self.handlers[self.stage].compute_reward(
                 info,
@@ -111,19 +118,24 @@ class TyperEnv(TyperBaseEnv):
                 self.target_finger,
                 self.target_key_pos,
                 self.target_key_indices,
+                qpos,
                 qvel,
                 self.tcp_viz,
                 self.goal_viz,
                 keyboard_qpos,
                 self.key_default_qpos,
+                self.desired_hand_qpos,
             )
             return reward
         else:
             raise NotImplementedError(f"Stage {self.stage} is not implemented")
 
     def evaluate(self):
+        current_target_finger = self.target_finger[
+            torch.arange(self.num_envs), self.key_press_progress
+        ]
         target_finger_pos = self.agent.get_finger_tip_pos(flatten=False)[
-            torch.arange(self.num_envs), self.target_finger
+            torch.arange(self.num_envs), current_target_finger
         ]
         reached = (
             torch.norm(
@@ -185,6 +197,7 @@ if __name__ == "__main__":
         num_envs=n_envs,
         obs_mode="state_dict",
         parallel_in_single_scene=False,
+        control_mode="pd_joint_pos",
     )
     env.reset()
 
@@ -213,9 +226,46 @@ if __name__ == "__main__":
             0.0,
         ]
     )
+
+    traj = np.load("/home/chengjing/Desktop/keyboard_typer/logs/TyperEnv/traj.npy")
+    traj = traj.squeeze(1)
+    initial_qpos = [
+        -0.03141593,
+        0.13439035,
+        0.03141593,
+        0.23911011,
+        3.1415927,
+        1.4643313,
+        -0.00349066,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+    ]
+
+    # qpos = np.vstack((initial_qpos, np.cumsum(traj, axis=0) + initial_qpos))
+
+    # while True:
+    import time
+
     while True:
         env.unwrapped.render_human()
 
-        # env.step(None)
+    # for i, q in enumerate(traj):
+    #     # env.step(q)
+    #     print(i)
+    #     env.unwrapped.agent.robot.set_qpos(q)
+    #     env.unwrapped.render_human()
+    #     time.sleep(0.5)
 
-        env.step(action)
+    # action = env.unwrapped.desired_hand_qpos.cpu().numpy().tolist()
+    # arm = [-0.03141593, 0.13439035, 0.03141593, 0.23911011, 3.1415927, 1.4643313, -0.00349066]
+    # action = np.concatenate((arm, action))
+
+    # env.step(None)
