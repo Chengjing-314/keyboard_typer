@@ -77,6 +77,9 @@ class TyperBaseEnv(BaseEnv):
         self.keyboard, self.keyboard_initial_pose = create_keyboard(
             self.scene, self.kb_manager, self.config, self.device
         )
+        
+        for link in self.keyboard.get_links():
+            link.set_disable_gravity(True) 
 
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
@@ -106,16 +109,17 @@ class TyperBaseEnv(BaseEnv):
         # We observed some keys will drop and maintain at 0.001 instead of 0, we set activation threshold to 0.002 to just be safe
         # when kp go beyond 40, the contact between the hand and the key is unstable
 
-        for ac_joint in self.keyboard.get_active_joints():
-            ac_joint.set_drive_properties(stiffness=20.0, damping=2.0)
-        active_joints = self.keyboard.get_active_joints()
-        if self.num_envs > 1:
-            self.keyboard.set_joint_drive_targets(
-                torch.zeros(len(active_joints), device=self.device),
-                joint_indices=torch.arange(
-                    len(active_joints), device=self.device, dtype=torch.int32
-                ),
-            )
+        # for ac_joint in self.keyboard.get_active_joints():
+        #     ac_joint.set_drive_properties(stiffness=20.0, damping=2.0)
+        # active_joints = self.keyboard.get_active_joints()
+        # if self.num_envs > 1:
+        #     self.keyboard.set_joint_drive_targets(
+        #         torch.zeros(len(active_joints), device=self.device),
+        #         joint_indices=torch.arange(
+        #             len(active_joints), device=self.device, dtype=torch.int32
+        #         ),
+        #     )
+        
 
         self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
             [0, 0, 0.1], device=self.device
@@ -148,10 +152,10 @@ class TyperBaseEnv(BaseEnv):
         # )
 
         pose_1 = Pose.create_from_pq(
-            p=[0.70426, -0.33465, 0.321123], q=[0.00349396, 0.243284, 0.0008865, -0.969949]
+            p=[0.70426, 0.33465, 0.321123], q=[0.00349396, 0.243284, 0.0008865, -0.969949]
         )
         pose_2 = Pose.create_from_pq(
-            p=[0.495599, -0.336736, 0.350851], q=[0.74583, -0.00343674, 0.666116, 0.0038441]
+            p=[0.495599, 0.336736, 0.350851], q=[0.74583, -0.00343674, 0.666116, 0.0038441]
         )
 
         return [

@@ -162,7 +162,7 @@ class TyperEnv(TyperBaseEnv):
             torch.arange(self.num_envs), current_target_key_indices
         ]
 
-        pressed = target_key_qpos > 0.002
+        pressed = target_key_qpos > 0.0025
 
         self.key_press_progress[pressed] = torch.clamp(
             self.key_press_progress[pressed] + 1, 0, self.num_chars - 1
@@ -170,11 +170,11 @@ class TyperEnv(TyperBaseEnv):
 
         finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
 
-        force_fail = torch.zeros_like(finished, device=self.device)
+        # force_fail = torch.zeros_like(finished, device=self.device)
 
-        return {"success": force_fail}
+        # return {"success": force_fail}
 
-        # return {"success": reached & finished}
+        return {"success": reached & finished}
 
     def get_reward_details(self):
         return self.reward_dict

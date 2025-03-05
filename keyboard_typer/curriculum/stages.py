@@ -177,7 +177,6 @@ class StageHandler(Stage):
         qvel_arm_only = qvel[:, :7]
         qvel_penalty = -torch.tanh(0.03 * torch.norm(qvel_arm_only, dim=-1))
 
-        # time_penalty = -0.01  # constant time penalty to encourage faster key presses
 
         current_target_key_indices = target_key_indices[
             torch.arange(num_envs),
@@ -204,19 +203,25 @@ class StageHandler(Stage):
         
         theta = torch.acos(rot_dot_product)
         theta_penalty = -2 *torch.tanh(0.3 * theta)
+        
+
+
+        distance_reward_weight = 1.0
+        velocity_penalty_weight = 1.5
+        actuation_reward_weight = 2.0
+        hand_pose_weight = 10.0
 
         reward = (
-            tcp_distance_reward
-            # + qvel_penalty
-            # + time_penalty
-            # + key_actuation_reward
+            distance_reward_weight * tcp_distance_reward
+            + velocity_penalty_weight * qvel_penalty
+            + actuation_reward_weight * key_actuation_reward
+            + hand_pose_weight * hand_qpos_reward
             # + non_target_activation_penality
-            # +  hand_qpos_reward
         )
 
-        # reward[info["success"]] = 20
-
-        reward /= 2  # normalize reward
+        reward[info["success"]] += 3
+        
+        reward /= 3.0
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
@@ -225,10 +230,9 @@ class StageHandler(Stage):
             tcp_distance_reward=tcp_distance_reward.mean(dim=-1).item(),
             over_all_distance_reward=0,  # Placeholder
             rotation_distance_reward=theta_penalty.mean(dim=-1).item(),  # Placeholder
-            # key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
-            key_actuation_reward=0,
-            # velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
-            velocity_penalty=0,
+            key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
+            velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
+            # velocity_penalty=0,
             # wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
             wrong_key_penalty=0,
             hand_qpos_reward=hand_qpos_reward.mean(dim=-1).item(),
