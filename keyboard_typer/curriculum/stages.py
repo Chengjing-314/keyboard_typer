@@ -209,7 +209,7 @@ class StageHandler(Stage):
         distance_reward_weight = 1.0
         velocity_penalty_weight = 1.5
         actuation_reward_weight = 2.0
-        hand_pose_weight = 10.0
+        hand_pose_weight = 2.0
 
         reward = (
             distance_reward_weight * tcp_distance_reward
@@ -221,7 +221,7 @@ class StageHandler(Stage):
 
         reward[info["success"]] += 3
         
-        reward /= 3.0
+        reward /= 10.0
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
