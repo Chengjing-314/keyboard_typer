@@ -299,7 +299,7 @@ class PPOConfig:
     learning_rate: float = 3e-4
     anneal_lr: bool = False
 
-    gamma: float = 0.99
+    gamma: float = 0.95
     gae_lambda: float = 0.9
     finite_horizon_gae: bool = True
 

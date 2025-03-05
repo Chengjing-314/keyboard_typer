@@ -9,6 +9,8 @@ from keyboard_typer.utils.keyboard.keyboard import Keyboard
 import numpy as np
 
 
+
+
 class Stage(ABC):
     def __init__(self, env):
         self.env = env
@@ -83,6 +85,8 @@ class StageHandler(Stage):
         target_finger: torch.Tensor,
         target_key_pos: torch.Tensor,
         keyboard_qpos: torch.Tensor,
+        hand_qpos: torch.Tensor,    
+        desired_hand_qpos: torch.Tensor,
     ):
         num_envs = len(finger_tip_pos)
 
@@ -116,7 +120,9 @@ class StageHandler(Stage):
             batch_idx[mask],
             next_key_press_progress[mask],
         ]
-
+        
+        qpos_distance = torch.norm(hand_qpos - desired_hand_qpos, dim=-1) 
+        
         obs = dict(
             target_finger_idx=current_target_finger,
             one_step_look_ahead_finger_idx=one_step_look_ahead_finger_idx,
@@ -125,6 +131,7 @@ class StageHandler(Stage):
             one_step_look_ahead_key_pos=one_step_look_ahead_key_pos,
             keyboard_qpos=keyboard_qpos,
             tcp_distance=tcp_distance,
+            qpos_distance=qpos_distance
         )
 
         return obs
@@ -137,6 +144,7 @@ class StageHandler(Stage):
         target_finger,
         target_key_pos,
         target_key_indices,
+        wrist_rot,
         qpos,
         qvel,
         tcp_viz,
@@ -144,27 +152,28 @@ class StageHandler(Stage):
         keyboard_qpos,
         key_default_qpos,
         desired_hand_qpos,
+        desired_wrist_rot,
     ):
         num_envs = len(finger_tip_pos)
         current_target_finger = target_finger[
             torch.arange(num_envs),
             key_press_progress,
         ]
+
         target_finger_pos = finger_tip_pos[torch.arange(num_envs), current_target_finger]
         current_target_key_pos = target_key_pos[
             torch.arange(num_envs),
             key_press_progress,
         ]
-        tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
 
-        tcp_distance_reward = 1 - torch.tanh(5 * tcp_distance)
+        tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
+        tcp_distance_reward =  - torch.tanh(5 * tcp_distance)
 
         hand_qpos = qpos[:, -10:]
-
         hand_qpos_reward = -torch.tanh(
-            0.25 * torch.norm(hand_qpos - desired_hand_qpos.unsqueeze(0), dim=-1)
+            0.5 * torch.norm(hand_qpos - desired_hand_qpos.unsqueeze(0), dim=-1)
         )
-
+        
         qvel_arm_only = qvel[:, :7]
         qvel_penalty = -torch.tanh(0.03 * torch.norm(qvel_arm_only, dim=-1))
 
@@ -189,6 +198,12 @@ class StageHandler(Stage):
         ]
         non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
         non_target_activation_penality = non_target_key_activation_count * -0.2
+        
+        rot_dot_product = torch.abs(torch.sum(wrist_rot * desired_wrist_rot, dim=-1))
+        rot_dot_product = torch.clamp(rot_dot_product, min=0.0, max=1.0)
+        
+        theta = torch.acos(rot_dot_product)
+        theta_penalty = -2 *torch.tanh(0.3 * theta)
 
         reward = (
             tcp_distance_reward
@@ -196,12 +211,12 @@ class StageHandler(Stage):
             # + time_penalty
             # + key_actuation_reward
             # + non_target_activation_penality
-            + hand_qpos_reward
+            # +  hand_qpos_reward
         )
 
-        reward[info["success"]] = 20
+        # reward[info["success"]] = 20
 
-        reward /= 4  # normalize reward
+        reward /= 2  # normalize reward
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
@@ -209,7 +224,7 @@ class StageHandler(Stage):
         reward_dict = dict(
             tcp_distance_reward=tcp_distance_reward.mean(dim=-1).item(),
             over_all_distance_reward=0,  # Placeholder
-            rotation_distance_reward=0,  # Placeholder
+            rotation_distance_reward=theta_penalty.mean(dim=-1).item(),  # Placeholder
             # key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
             key_actuation_reward=0,
             # velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder

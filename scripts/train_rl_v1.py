@@ -1,3 +1,7 @@
+
+## CUDA_VISIBLE_DEVICES=5 python3 scripts/train_rl_v1.py --exp_name 
+## CUDA_VISIBLE_DEVICES=6 python3 scripts/train_rl_v1.py --exp_name t85
+
 import os
 from dataclasses import dataclass, field
 
@@ -46,9 +50,9 @@ if __name__ == "__main__":
 
     # args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/with_qpos_reward_3_char_cont_qpos_penality/ckpts/ckpt_121.pt"
 
-    args.agent_config.load_from = (
-        "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy/ckpts/ckpt_31.pt"
-    )
+    # args.agent_config.load_from = (
+    #     "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy/ckpts/ckpt_31.pt"
+    # )
 
     # env setup
     train_env_kwargs = dict(

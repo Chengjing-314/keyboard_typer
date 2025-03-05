@@ -17,15 +17,15 @@ from keyboard_typer.mani_skill.envs.typer_base_env import (
     TyperEnvBaseConfig,
 )
 
-device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 @dataclass
 class TyperEnvConfig(TyperEnvBaseConfig):
     keyboard_initial_pose: list = field(
         default_factory=lambda: [
-            0.3,
-            -0.1,
+            0.5,
+            -0.35,
             0.5,
         ]
     )  # Relative values, Z will scale with kb_height
@@ -50,6 +50,7 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
         self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:] 
         if self.stage in self.handlers:
             if self.target_key_pos is None:
                 self.target_key_pos, self.target_finger, self.target_key_indices = self.handlers[
@@ -94,6 +95,8 @@ class TyperEnv(TyperBaseEnv):
         if self.stage in self.handlers:
             finger_tip_pos = self.agent.get_finger_tip_pos(flatten=False)
             keyboard_qpos = self.keyboard.qpos
+            # _, wrist_q = self.agent.get_wrist_pose()
+            hand_qpos = self.agent.robot.qpos[:, -10:]
             return self.handlers[self.stage].get_obs(
                 self.key_press_progress,
                 self.num_chars,
@@ -101,6 +104,8 @@ class TyperEnv(TyperBaseEnv):
                 self.target_finger,
                 self.target_key_pos,
                 keyboard_qpos,
+                hand_qpos, 
+                self.desired_hand_qpos
             )
         else:
             raise NotImplementedError(f"Stage {self.stage} is not implemented")
@@ -111,6 +116,7 @@ class TyperEnv(TyperBaseEnv):
             qvel = self.agent.robot.qvel
             qpos = self.agent.robot.qpos
             keyboard_qpos = self.keyboard.qpos
+            wrist_rot = self.agent.get_wrist_raw_pose()[:, 3:]
             reward, self.reward_dict = self.handlers[self.stage].compute_reward(
                 info,
                 self.key_press_progress,
@@ -118,6 +124,7 @@ class TyperEnv(TyperBaseEnv):
                 self.target_finger,
                 self.target_key_pos,
                 self.target_key_indices,
+                wrist_rot,
                 qpos,
                 qvel,
                 self.tcp_viz,
@@ -125,6 +132,7 @@ class TyperEnv(TyperBaseEnv):
                 keyboard_qpos,
                 self.key_default_qpos,
                 self.desired_hand_qpos,
+                self.desired_wrist_rot,
             )
             return reward
         else:
@@ -161,8 +169,12 @@ class TyperEnv(TyperBaseEnv):
         )
 
         finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
-
-        return {"success": reached & finished}
+        
+        force_fail = torch.zeros_like(finished, device=self.device)  
+        
+        return {"success": force_fail}
+         
+        # return {"success": reached & finished}
 
     def get_reward_details(self):
         return self.reward_dict
