@@ -23,7 +23,7 @@ MAX_EPISODE_STEPS = 100
 
 @dataclass
 class TyperEnvBaseConfig:
-    robot_uids: Union[str, tuple] = "xarm7_right"
+    robot_uids: Union[str, tuple] = "xarm7_left"
     bimanual: bool = False
     initial_agent_poses: Union[sapien.Pose, list[sapien.Pose]] = None
     fix_keyboard: bool = True
@@ -118,7 +118,7 @@ class TyperBaseEnv(BaseEnv):
             )
 
         self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
-            [0, 0, 0.05], device=self.device
+            [0, 0, 0.1], device=self.device
         )
         self.keyboard.set_pose(Pose.create_from_pq(self.keyboard_pos))
 
@@ -146,7 +146,7 @@ class TyperBaseEnv(BaseEnv):
         # pose_2 = Pose.create_from_pq(
         #     p=[0.712071, 0.0022968, 0.148511], q=[0.0192958, -0.0189956, 0.000362143, 0.999633]
         # )
-        
+
         pose_1 = Pose.create_from_pq(
             p=[0.70426, -0.33465, 0.321123], q=[0.00349396, 0.243284, 0.0008865, -0.969949]
         )

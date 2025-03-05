@@ -25,10 +25,10 @@ class TyperEnvConfig(TyperEnvBaseConfig):
     keyboard_initial_pose: list = field(
         default_factory=lambda: [
             0.5,
-            -0.35,
+            0.35,
             0.5,
         ]
-    )  # Relative values, Z will scale with kb_height
+    )  # Relative values, Z will scale with kb_height, AKA dont change z here, can change x and y
 
 
 @register_env("TyperEnv-v0", max_episode_steps=MAX_EPISODE_STEPS)
@@ -50,7 +50,7 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
         self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
-        self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:] 
+        self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:]
         if self.stage in self.handlers:
             if self.target_key_pos is None:
                 self.target_key_pos, self.target_finger, self.target_key_indices = self.handlers[
@@ -104,8 +104,8 @@ class TyperEnv(TyperBaseEnv):
                 self.target_finger,
                 self.target_key_pos,
                 keyboard_qpos,
-                hand_qpos, 
-                self.desired_hand_qpos
+                hand_qpos,
+                self.desired_hand_qpos,
             )
         else:
             raise NotImplementedError(f"Stage {self.stage} is not implemented")
@@ -169,11 +169,11 @@ class TyperEnv(TyperBaseEnv):
         )
 
         finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
-        
-        force_fail = torch.zeros_like(finished, device=self.device)  
-        
+
+        force_fail = torch.zeros_like(finished, device=self.device)
+
         return {"success": force_fail}
-         
+
         # return {"success": reached & finished}
 
     def get_reward_details(self):
