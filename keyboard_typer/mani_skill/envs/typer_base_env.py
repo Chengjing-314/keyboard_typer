@@ -77,9 +77,9 @@ class TyperBaseEnv(BaseEnv):
         self.keyboard, self.keyboard_initial_pose = create_keyboard(
             self.scene, self.kb_manager, self.config, self.device
         )
-        
+
         for link in self.keyboard.get_links():
-            link.set_disable_gravity(True) 
+            link.set_disable_gravity(True)
 
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
@@ -119,11 +119,10 @@ class TyperBaseEnv(BaseEnv):
         #             len(active_joints), device=self.device, dtype=torch.int32
         #         ),
         #     )
-        
 
         self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
-            [0, 0, 0.1], device=self.device
-        )
+            [0.0, 0.0, 0.1], device=self.device
+        )  # to test pressing, set y to 0.015
         self.keyboard.set_pose(Pose.create_from_pq(self.keyboard_pos))
 
         self.keyboard.set_qpos(torch.zeros((num_envs, self.keyboard.dof[0]), device=self.device))

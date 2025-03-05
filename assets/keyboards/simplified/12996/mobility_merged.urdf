@@ -8,12 +8,12 @@
       </geometry>
       <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
     </visual>
-    <!-- <collision name="merged_collision"> -->
-    <!--   <geometry> -->
-    <!--     <mesh filename="merged_collision_meshes/merged_link_0.stl"/> -->
-    <!--   </geometry> -->
-    <!--   <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/> -->
-    <!-- </collision> -->
+    <collision name="merged_collision">
+      <geometry>
+        <mesh filename="merged_collision_meshes/merged_link_0.stl"/>
+      </geometry>
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 -0.0 0.0"/>
+    </collision>
   </link>
   <link name="link_1">
     <visual name="key-2">

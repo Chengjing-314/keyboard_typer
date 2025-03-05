@@ -266,7 +266,30 @@ if __name__ == "__main__":
     # while True:
     import time
 
+    action = torch.tensor(
+        [
+            -0.03141593,
+            0.13439035,
+            0.03141593,
+            0.23911011,
+            3.1415927,
+            1.4643313,
+            -0.00349066,
+            0.0,
+            0.305,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            1.395,
+            0.0,
+            0.0,
+            0.0,
+        ]
+    )
+
     while True:
+        env.step(action)
         env.unwrapped.render_human()
 
     # for i, q in enumerate(traj):
