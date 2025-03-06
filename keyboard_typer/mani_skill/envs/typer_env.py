@@ -288,9 +288,39 @@ if __name__ == "__main__":
         ]
     )
 
-    while True:
-        env.step(action)
+    action_raise = torch.tensor(
+        [
+            -0.03141593,
+            0.13439035,
+            0.03141593,
+            0.23911011,
+            3.1415927,
+            1.4643313,
+            -0.00349066,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+        ]
+    )
+
+    # while True:
+    #     env.step(action)
+    #     env.unwrapped.render_human()
+
+    for i in range(int(1e3)):
+        if i < 5e2:
+            env.step(action)
+        else:
+            env.step(action_raise)
         env.unwrapped.render_human()
+        print(env.unwrapped.keyboard.qpos[0, 42].item())
 
     # for i, q in enumerate(traj):
     #     # env.step(q)

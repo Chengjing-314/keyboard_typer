@@ -81,6 +81,17 @@ class TyperBaseEnv(BaseEnv):
         for link in self.keyboard.get_links():
             link.set_disable_gravity(True)
 
+        for ac_joint in self.keyboard.get_active_joints():
+            ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
+        active_joints = self.keyboard.get_active_joints()
+        if self.num_envs > 1:
+            self.keyboard.set_joint_drive_targets(
+                torch.zeros(len(active_joints), device=self.device),
+                joint_indices=torch.arange(
+                    len(active_joints), device=self.device, dtype=torch.int32
+                ),
+            )
+
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
             self.scene,
@@ -108,17 +119,6 @@ class TyperBaseEnv(BaseEnv):
 
         # We observed some keys will drop and maintain at 0.001 instead of 0, we set activation threshold to 0.002 to just be safe
         # when kp go beyond 40, the contact between the hand and the key is unstable
-
-        # for ac_joint in self.keyboard.get_active_joints():
-        #     ac_joint.set_drive_properties(stiffness=20.0, damping=2.0)
-        # active_joints = self.keyboard.get_active_joints()
-        # if self.num_envs > 1:
-        #     self.keyboard.set_joint_drive_targets(
-        #         torch.zeros(len(active_joints), device=self.device),
-        #         joint_indices=torch.arange(
-        #             len(active_joints), device=self.device, dtype=torch.int32
-        #         ),
-        #     )
 
         self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
             [0.0, 0.0, 0.1], device=self.device
