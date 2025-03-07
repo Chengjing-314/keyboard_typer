@@ -12,6 +12,7 @@ from mani_skill.utils.wrappers.flatten import FlattenActionSpaceWrapper
 from mani_skill.utils.wrappers.record import RecordEpisode
 from keyboard_typer.mani_skill.envs.typer_env import TyperEnv, TyperEnvConfig  # noqa
 from keyboard_typer.rl_lib import PPO_typer, PPOConfig, Agent, AgentConfig, ManiSkillVectorEnv
+from keyboard_typer.curriculum.stages import StageConfig
 
 
 @dataclass
@@ -23,6 +24,7 @@ class Args:
     obs_mode: str = "state"
     typer_config: TyperEnvConfig = field(default_factory=lambda: TyperEnvConfig())
     agent_config: AgentConfig = field(default_factory=lambda: AgentConfig())
+    stage_config: StageConfig = field(default_factory=lambda: StageConfig())
     exp_name: str = "TyperEnv"
 
     trainer: PPOConfig = field(
@@ -33,6 +35,7 @@ class Args:
             eval_freq=10,
         )
     )
+    
 
 
 if __name__ == "__main__":
@@ -42,23 +45,12 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    # args.agent_config.load_from = (
-    #     "/home/chengjing/Desktop/keyboard_typer/logs/with_actuation_new_obs/ckpts/ckpt_11.pt"
-    # )
+    args.stage_config.action_regularization_weight = 8.0
+    args.stage_config.hand_pose_weight = 5.0
+    args.stage_config.actuation_reward_weight = 3.0
+    args.stage_config.distance_reward_weight = 1.0
+    args.stage_config.velocity_penalty_weight = 8.0
 
-    # args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/with_actuation_obs_fixed_actuation_press/ckpts/ckpt_91.pt"
-
-    # args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/with_qpos_reward_3_char_cont_qpos_penality/ckpts/ckpt_121.pt"
-
-    # args.agent_config.load_from = (
-    #     "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy/ckpts/ckpt_31.pt"
-    # )
-    
-    # args.agent_config.load_from = (
-    #         "/data/chengjingyuan/keyboard_typer/logs/large_vel_pen_scratch/ckpts/ckpt_801.pt"
-    #)
-    
-    # args.agent_config.load_from = ("/data/chengjingyuan/keyboard_typer/logs/large_vel_pen_scratch/ckpts/ckpt_601.pt")
 
     # env setup
     train_env_kwargs = dict(
@@ -75,10 +67,10 @@ if __name__ == "__main__":
         sim_backend="gpu",
     )
     env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_envs, **train_env_kwargs
+        args.env_id, config=args.typer_config, num_envs=args.num_envs, stage_config=args.stage_config, **train_env_kwargs
     )
     eval_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **eval_env_kwargs
+        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
     )
     # env = gym.make(args.env_id, num_envs=args.num_envs, **env_kwargs)
     # eval_env = gym.make(args.env_id, num_envs=args.num_eval_envs, **env_kwargs)
@@ -105,7 +97,7 @@ if __name__ == "__main__":
     agent = Agent(args.agent_config, env)
 
     trainer = PPO_typer(config=args.trainer, agent=agent, env=env, eval_env=eval_env)
-    trainer.train(seed=args.seed)
+    trainer.train(seed=args.seed, stage_config=args.stage_config)
 
     env.close()
     eval_env.close()

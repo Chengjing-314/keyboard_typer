@@ -16,6 +16,7 @@ from keyboard_typer.constants import ASSETS_ROOT
 from keyboard_typer.utils.keyboard.keyboard import BlackKeyboard, Keyboard
 from keyboard_typer.utils.scene_builder.table import TableSceneBuilder
 from keyboard_typer.mani_skill.agents import XArm7AbilityLeft, XArm7AbilityRight
+from keyboard_typer.curriculum.stages import StageConfig
 
 
 MAX_EPISODE_STEPS = 100

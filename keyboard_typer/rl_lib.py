@@ -17,6 +17,7 @@ from mani_skill.utils import gym_utils
 from mani_skill.utils.structs.types import Array
 from torch.distributions.normal import Normal
 from keyboard_typer.mani_skill.envs.typer_env import MAX_EPISODE_STEPS
+from keyboard_typer.curriculum.stages import StageConfig
 import wandb
 
 
@@ -815,8 +816,9 @@ class PPO_typer(PPO):
         )
 
         return obs
+ 
 
-    def train(self, seed: int = 0):
+    def train(self, seed: int = 0, stage_config: StageConfig = None):
         random.seed(seed)
         np.random.seed(seed)
         torch.manual_seed(seed)
@@ -833,6 +835,8 @@ class PPO_typer(PPO):
                 save_code=True,
                 monitor_gym=True,
             )
+            
+        wandb.config.update(asdict(stage_config))
 
         optimizer = optim.Adam(self.agent.parameters(), lr=self.config.learning_rate, eps=1e-5)
 

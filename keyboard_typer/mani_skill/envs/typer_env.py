@@ -16,6 +16,7 @@ from keyboard_typer.mani_skill.envs.typer_base_env import (
     TyperBaseEnv,
     TyperEnvBaseConfig,
 )
+from keyboard_typer.curriculum.stages import StageConfig
 
 # device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
@@ -33,9 +34,9 @@ class TyperEnvConfig(TyperEnvBaseConfig):
 
 @register_env("TyperEnv-v0", max_episode_steps=MAX_EPISODE_STEPS)
 class TyperEnv(TyperBaseEnv):
-    def __init__(self, *args, config: TyperEnvConfig, robot_uids: str = "", **kwargs):
+    def __init__(self, *args, config: TyperEnvConfig, robot_uids: str = "", stage_config: StageConfig = None, **kwargs):
         self.stage = 1  # Current stage
-        self.handlers = {1: StageHandler(self)}
+        self.handlers = {1: StageHandler(self, stage_config)}
         self.target_key_pos = None
         self.target_finger = None
         self.key_default_qpos = None

@@ -5,15 +5,29 @@ from mani_skill.utils.structs.actor import Actor
 from mani_skill.agents.base_agent import BaseAgent
 
 from keyboard_typer.utils.keyboard.keyboard import Keyboard
+from dataclasses import dataclass   
 
 import numpy as np
 
 
+@dataclass 
+class StageConfig:
+    distance_reward_weight: float = 1.0
+    velocity_penalty_weight:float = 8.0
+    actuation_reward_weight: float = 3.0 
+    hand_pose_weight: float = 5.0
+    action_regularization_weight: float = 8.0 
 
 
 class Stage(ABC):
-    def __init__(self, env):
+    def __init__(self, env, config: StageConfig):
         self.env = env
+        self.config = config
+        self.distance_reward_weight = config.distance_reward_weight
+        self.velocity_penalty_weight = config.velocity_penalty_weight
+        self.actuation_reward_weight = config.actuation_reward_weight
+        self.hand_pose_weight = config.hand_pose_weight
+        self.action_regularization_weight = config.action_regularization_weight
 
     @abstractmethod
     def initialize(self, *args, **kwargs):
@@ -204,20 +218,12 @@ class StageHandler(Stage):
         arm_action = action[:, :7] 
         action_regularization = -0.2 * torch.norm(arm_action, dim=-1)
         
-
-        
-        distance_reward_weight = 1.0
-        velocity_penalty_weight = 8.0
-        actuation_reward_weight = 3.0 # 2.0 as base, 3.0 to encourage pressing 
-        hand_pose_weight = 5.0
-        action_regularization_weight = 8.0 
-
         reward = (
-            distance_reward_weight * tcp_distance_reward
-            + velocity_penalty_weight * qvel_penalty
-            + actuation_reward_weight * key_actuation_reward
-            + hand_pose_weight * hand_qpos_reward
-            + action_regularization_weight * action_regularization
+            self.distance_reward_weight * tcp_distance_reward
+            + self.velocity_penalty_weight * qvel_penalty
+            + self.actuation_reward_weight * key_actuation_reward
+            + self.hand_pose_weight * hand_qpos_reward
+            + self.action_regularization_weight * action_regularization
             + non_target_activation_penality
             + time_penality
         )
