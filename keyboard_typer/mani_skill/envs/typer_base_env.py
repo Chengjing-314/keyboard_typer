@@ -83,15 +83,14 @@ class TyperBaseEnv(BaseEnv):
 
         for ac_joint in self.keyboard.get_active_joints():
             ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
-        active_joints = self.keyboard.get_active_joints()
-        if self.num_envs > 1:
-            self.keyboard.set_joint_drive_targets(
-                torch.zeros(len(active_joints), device=self.device),
-                joint_indices=torch.arange(
-                    len(active_joints), device=self.device, dtype=torch.int32
-                ),
-            )
-
+        # active_joints = self.keyboard.get_active_joints()
+        # if self.num_envs > 1:
+        #     self.keyboard.set_joint_drive_targets(
+        #         torch.zeros(len(active_joints), device=self.device),
+        #         joint_indices=torch.arange(
+        #             len(active_joints), device=self.device, dtype=torch.int32
+        #         ),
+    
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
             self.scene,

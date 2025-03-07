@@ -139,6 +139,7 @@ class StageHandler(Stage):
     def compute_reward(
         self,
         info,
+        action,
         key_press_progress,
         finger_tip_pos,
         target_finger,
@@ -167,7 +168,7 @@ class StageHandler(Stage):
         ]
 
         tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
-        tcp_distance_reward =  - torch.tanh(5 * tcp_distance)
+        tcp_distance_reward =  - torch.tanh(5 * tcp_distance) # this encourage the finger to move closer to the key as a 0.2 distance will be -1
 
         hand_qpos = qpos[:, -10:]
         hand_qpos_reward = -torch.tanh(
@@ -176,7 +177,6 @@ class StageHandler(Stage):
         
         qvel_arm_only = qvel[:, :7]
         qvel_penalty = -torch.tanh(0.03 * torch.norm(qvel_arm_only, dim=-1))
-
 
         current_target_key_indices = target_key_indices[
             torch.arange(num_envs),
@@ -196,35 +196,44 @@ class StageHandler(Stage):
             torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
         ]
         non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
-        non_target_activation_penality = non_target_key_activation_count * -0.2
+        exist_wrong_key = non_target_key_activation_count > 0 
+        non_target_activation_penality = exist_wrong_key * -0.1
+        time_penality = -0.05 # This is needed to prevent the agent from not pressing the key
         
-        rot_dot_product = torch.abs(torch.sum(wrist_rot * desired_wrist_rot, dim=-1))
-        rot_dot_product = torch.clamp(rot_dot_product, min=0.0, max=1.0)
         
-        theta = torch.acos(rot_dot_product)
-        theta_penalty = -2 *torch.tanh(0.3 * theta)
+        arm_action = action[:, :7] 
+        action_regularization = -0.2 * torch.norm(arm_action, dim=-1)
         
 
-
+        
         distance_reward_weight = 1.0
-        velocity_penalty_weight = 1.5
-        actuation_reward_weight = 2.0
-        hand_pose_weight = 2.0
+        velocity_penalty_weight = 8.0
+        actuation_reward_weight = 3.0 # 2.0 as base, 3.0 to encourage pressing 
+        hand_pose_weight = 5.0
+        action_regularization_weight = 8.0 
 
         reward = (
             distance_reward_weight * tcp_distance_reward
             + velocity_penalty_weight * qvel_penalty
             + actuation_reward_weight * key_actuation_reward
             + hand_pose_weight * hand_qpos_reward
-            # + non_target_activation_penality
+            + action_regularization_weight * action_regularization
+            + non_target_activation_penality
+            + time_penality
         )
 
         reward[info["success"]] += 3
         
-        reward /= 10.0
+        reward /= 16.0
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
         goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
+
+        rot_dot_product = torch.abs(torch.sum(wrist_rot * desired_wrist_rot, dim=-1))
+        rot_dot_product = torch.clamp(rot_dot_product, min=0.0, max=1.0)
+        
+        theta = torch.acos(rot_dot_product)
+        theta_penalty = -2 *torch.tanh(0.3 * theta)
 
         reward_dict = dict(
             tcp_distance_reward=tcp_distance_reward.mean(dim=-1).item(),
@@ -233,9 +242,10 @@ class StageHandler(Stage):
             key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
             velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
             # velocity_penalty=0,
-            # wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
-            wrong_key_penalty=0,
+            wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
+            # wrong_key_penalty=0,
             hand_qpos_reward=hand_qpos_reward.mean(dim=-1).item(),
+            action_regularization=action_regularization.mean(dim=-1).item(),
         )
 
         return reward, reward_dict

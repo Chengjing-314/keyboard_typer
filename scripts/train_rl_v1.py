@@ -55,8 +55,10 @@ if __name__ == "__main__":
     # )
     
     # args.agent_config.load_from = (
-    #         "/data/chengjingyuan/keyboard_typer/logs/left_hand_train_full_reward/ckpts/ckpt_151.pt"
-    # )
+    #         "/data/chengjingyuan/keyboard_typer/logs/large_vel_pen_scratch/ckpts/ckpt_801.pt"
+    #)
+    
+    # args.agent_config.load_from = ("/data/chengjingyuan/keyboard_typer/logs/large_vel_pen_scratch/ckpts/ckpt_601.pt")
 
     # env setup
     train_env_kwargs = dict(

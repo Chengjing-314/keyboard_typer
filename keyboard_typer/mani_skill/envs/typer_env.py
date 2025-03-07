@@ -119,6 +119,7 @@ class TyperEnv(TyperBaseEnv):
             wrist_rot = self.agent.get_wrist_raw_pose()[:, 3:]
             reward, self.reward_dict = self.handlers[self.stage].compute_reward(
                 info,
+                action,
                 self.key_press_progress,
                 finger_tip_pos,
                 self.target_finger,

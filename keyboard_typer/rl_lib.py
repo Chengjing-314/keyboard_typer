@@ -774,6 +774,7 @@ class PPO_typer(PPO):
         self.velocity_penalty = 0
         self.wrong_key_penalty = 0
         self.hand_qpos_reward = 0
+        self.action_regularization = 0
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
@@ -783,6 +784,7 @@ class PPO_typer(PPO):
         self.velocity_penalty += reward_dict["velocity_penalty"]
         self.wrong_key_penalty += reward_dict["wrong_key_penalty"]
         self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
+        self.action_regularization += reward_dict["action_regularization"]
 
     def process_obs(self, obs: dict):
         agent_dict = obs["agent"]
@@ -1225,6 +1227,7 @@ class PPO_typer(PPO):
                         "rewards/wrong_key_penalty": self.wrong_key_penalty
                         / self.config.num_steps,
                         "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
+                        "rewards/action_regularization": self.action_regularization / self.config.num_steps,
                     },
                     step=global_step,
                 )
