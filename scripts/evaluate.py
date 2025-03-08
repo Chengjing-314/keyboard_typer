@@ -8,6 +8,7 @@ from mani_skill.utils.wrappers.flatten import FlattenActionSpaceWrapper
 from mani_skill.utils.wrappers.record import RecordEpisode
 from keyboard_typer.mani_skill.envs.typer_env import TyperEnv, TyperEnvConfig  # noqa
 from keyboard_typer.rl_lib import PPO_typer, PPOConfig, Agent, AgentConfig, ManiSkillVectorEnv
+from keyboard_typer.curriculum.stages import StageConfig
 
 
 @dataclass
@@ -18,6 +19,7 @@ class Args:
     obs_mode: str = "state"
     typer_config: TyperEnvConfig = field(default_factory=lambda: TyperEnvConfig())
     agent_config: AgentConfig = field(default_factory=lambda: AgentConfig())
+    stage_config: StageConfig = field(default_factory=lambda: StageConfig())
     exp_name: str = "TyperEnv"
 
     trainer: PPOConfig = field(
@@ -37,7 +39,7 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    args.agent_config.load_from = "/home/chengjing/Desktop/keyboard_typer/logs/single_finger_deploy_cont_w_vpen/ckpts/ckpt_121.pt"
+    args.agent_config.load_from = "/data/chengjingyuan/keyboard_typer/logs/w_non_target_pen/ckpts/ckpt_941.pt"
 
     eval_env_kwargs = dict(
         obs_mode=args.obs_mode,
@@ -47,13 +49,13 @@ if __name__ == "__main__":
     )
 
     fake_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **eval_env_kwargs
+        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
     )
     if isinstance(fake_env.action_space, gym.spaces.Dict):
         fake_env = FlattenActionSpaceWrapper(fake_env)
 
     eval_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, **eval_env_kwargs
+        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
     )
     if isinstance(eval_env.action_space, gym.spaces.Dict):
         eval_env = FlattenActionSpaceWrapper(eval_env)

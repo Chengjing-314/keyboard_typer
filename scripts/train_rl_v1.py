@@ -45,11 +45,13 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    args.stage_config.action_regularization_weight = 8.0
-    args.stage_config.hand_pose_weight = 5.0
+    # Task parameters
     args.stage_config.actuation_reward_weight = 3.0
-    args.stage_config.distance_reward_weight = 1.0
-    args.stage_config.velocity_penalty_weight = 8.0
+    args.stage_config.distance_reward_weight = 3.0
+    # Regularization parameters
+    args.stage_config.velocity_penalty_weight = 20.0
+    args.stage_config.action_regularization_weight = 18.0
+    args.stage_config.hand_pose_weight = 3.0
 
 
     # env setup

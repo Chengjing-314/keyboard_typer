@@ -34,7 +34,14 @@ class TyperEnvConfig(TyperEnvBaseConfig):
 
 @register_env("TyperEnv-v0", max_episode_steps=MAX_EPISODE_STEPS)
 class TyperEnv(TyperBaseEnv):
-    def __init__(self, *args, config: TyperEnvConfig, robot_uids: str = "", stage_config: StageConfig = None, **kwargs):
+    def __init__(
+        self,
+        *args,
+        config: TyperEnvConfig,
+        robot_uids: str = "",
+        stage_config: StageConfig = None,
+        **kwargs,
+    ):
         self.stage = 1  # Current stage
         self.handlers = {1: StageHandler(self, stage_config)}
         self.target_key_pos = None
@@ -42,6 +49,21 @@ class TyperEnv(TyperBaseEnv):
         self.key_default_qpos = None
         self.num_chars = 3
         super().__init__(*args, config=config, robot_uids="", **kwargs)
+        self.single_finger = torch.tensor(
+            [
+                0.0,
+                0.394,
+                2.094,
+                2.094,
+                2.094,
+                2.094,
+                1.089,
+                2.659,
+                2.659,
+                2.659,
+            ],
+            device=self.device,
+        )
 
     def _initialize_episode(self, env_idx, options):
         super()._initialize_episode(env_idx, options)
@@ -171,10 +193,6 @@ class TyperEnv(TyperBaseEnv):
         )
 
         finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
-
-        # force_fail = torch.zeros_like(finished, device=self.device)
-
-        # return {"success": force_fail}
 
         return {"success": reached & finished}
 

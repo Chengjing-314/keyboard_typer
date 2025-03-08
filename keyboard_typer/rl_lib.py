@@ -769,7 +769,6 @@ class PPO_typer(PPO):
 
     def reset_reward(self):
         self.tcp_distance_reward = 0
-        self.over_all_distance_reward = 0
         self.key_actuation_reward = 0
         self.rotation_distance_reward = 0
         self.velocity_penalty = 0
@@ -779,7 +778,6 @@ class PPO_typer(PPO):
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
-        self.over_all_distance_reward += reward_dict["over_all_distance_reward"]
         self.key_actuation_reward += reward_dict["key_actuation_reward"]
         self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
         self.velocity_penalty += reward_dict["velocity_penalty"]
@@ -816,7 +814,6 @@ class PPO_typer(PPO):
         )
 
         return obs
- 
 
     def train(self, seed: int = 0, stage_config: StageConfig = None):
         random.seed(seed)
@@ -835,7 +832,7 @@ class PPO_typer(PPO):
                 save_code=True,
                 monitor_gym=True,
             )
-            
+
         wandb.config.update(asdict(stage_config))
 
         optimizer = optim.Adam(self.agent.parameters(), lr=self.config.learning_rate, eps=1e-5)
@@ -907,6 +904,13 @@ class PPO_typer(PPO):
                 for i in range(self.config.num_eval_steps):
                     with torch.no_grad():
                         action = self.agent.get_action(eval_obs, deterministic=True)
+                        #!!
+                        action[:, -10:] = (
+                            self.eval_env.unwrapped.single_finger.repeat(
+                                (self.eval_env.num_envs, 1)
+                            )
+                            - self.eval_env.unwrapped.agent.robot.qpos[:, -10:]
+                        )
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
                             self.eval_env.step(action)
                         )
@@ -994,6 +998,11 @@ class PPO_typer(PPO):
                 logprobs[step] = logprob
 
                 # TRY NOT TO MODIFY: execute the game and log data.
+                #!!
+                action[:, -10:] = (
+                    self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
+                    - self.env.unwrapped.agent.robot.qpos[:, -10:]
+                )
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
@@ -1222,8 +1231,6 @@ class PPO_typer(PPO):
                 wandb.log(
                     {
                         "rewards/tcp_distance": self.tcp_distance_reward / self.config.num_steps,
-                        "rewards/over_all_distance": self.over_all_distance_reward
-                        / self.config.num_steps,
                         "rewards/key_actuation": self.key_actuation_reward / self.config.num_steps,
                         "rewards/rotation_distance": self.rotation_distance_reward
                         / self.config.num_steps,
@@ -1231,7 +1238,8 @@ class PPO_typer(PPO):
                         "rewards/wrong_key_penalty": self.wrong_key_penalty
                         / self.config.num_steps,
                         "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
-                        "rewards/action_regularization": self.action_regularization / self.config.num_steps,
+                        "rewards/action_regularization": self.action_regularization
+                        / self.config.num_steps,
                     },
                     step=global_step,
                 )
@@ -1259,6 +1267,7 @@ class PPO_typer(PPO):
         for i in range(self.config.num_eval_steps):
             with torch.no_grad():
                 action = self.agent.get_action(eval_obs, deterministic=True)
+                action[:, -10:] = self.eval_env.num_envs
                 eval_obs, _, eval_terminations, eval_truncations, eval_infos = self.eval_env.step(
                     action
                 )
