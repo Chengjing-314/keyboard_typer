@@ -5,18 +5,18 @@ from mani_skill.utils.structs.actor import Actor
 from mani_skill.agents.base_agent import BaseAgent
 
 from keyboard_typer.utils.keyboard.keyboard import Keyboard
-from dataclasses import dataclass   
+from dataclasses import dataclass
 
 import numpy as np
 
 
-@dataclass 
+@dataclass
 class StageConfig:
     distance_reward_weight: float = 1.0
-    velocity_penalty_weight:float = 8.0
-    actuation_reward_weight: float = 3.0 
+    velocity_penalty_weight: float = 8.0
+    actuation_reward_weight: float = 3.0
     hand_pose_weight: float = 5.0
-    action_regularization_weight: float = 8.0 
+    action_regularization_weight: float = 8.0
 
 
 class Stage(ABC):
@@ -99,7 +99,7 @@ class StageHandler(Stage):
         target_finger: torch.Tensor,
         target_key_pos: torch.Tensor,
         keyboard_qpos: torch.Tensor,
-        hand_qpos: torch.Tensor,    
+        hand_qpos: torch.Tensor,
         desired_hand_qpos: torch.Tensor,
     ):
         num_envs = len(finger_tip_pos)
@@ -134,9 +134,9 @@ class StageHandler(Stage):
             batch_idx[mask],
             next_key_press_progress[mask],
         ]
-        
-        qpos_distance = torch.norm(hand_qpos - desired_hand_qpos, dim=-1) 
-        
+
+        qpos_distance = torch.norm(hand_qpos - desired_hand_qpos, dim=-1)
+
         obs = dict(
             target_finger_idx=current_target_finger,
             one_step_look_ahead_finger_idx=one_step_look_ahead_finger_idx,
@@ -145,7 +145,7 @@ class StageHandler(Stage):
             one_step_look_ahead_key_pos=one_step_look_ahead_key_pos,
             keyboard_qpos=keyboard_qpos,
             tcp_distance=tcp_distance,
-            qpos_distance=qpos_distance
+            qpos_distance=qpos_distance,
         )
 
         return obs
@@ -182,13 +182,15 @@ class StageHandler(Stage):
         ]
 
         tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
-        tcp_distance_reward =  - torch.tanh(5 * tcp_distance) # this encourage the finger to move closer to the key as a 0.2 distance will be -1
+        tcp_distance_reward = -torch.tanh(
+            5 * tcp_distance
+        )  # this encourage the finger to move closer to the key as a 0.2 distance will be -1
 
         hand_qpos = qpos[:, -10:]
         hand_qpos_reward = -torch.tanh(
             0.5 * torch.norm(hand_qpos - desired_hand_qpos.unsqueeze(0), dim=-1)
         )
-        
+
         qvel_arm_only = qvel[:, :7]
         qvel_penalty = -torch.tanh(0.03 * torch.norm(qvel_arm_only, dim=-1))
 
@@ -210,14 +212,13 @@ class StageHandler(Stage):
             torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
         ]
         non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
-        exist_wrong_key = non_target_key_activation_count > 0 
+        exist_wrong_key = non_target_key_activation_count > 0
         non_target_activation_penality = exist_wrong_key * -0.1
-        time_penality = -0.05 # This is needed to prevent the agent from not pressing the key
-        
-        
-        arm_action = action[:, :7] 
+        time_penality = -0.05  # This is needed to prevent the agent from not pressing the key
+
+        arm_action = action[:, :7]
         action_regularization = -0.2 * torch.norm(arm_action, dim=-1)
-        
+
         reward = (
             self.distance_reward_weight * tcp_distance_reward
             + self.velocity_penalty_weight * qvel_penalty
@@ -225,11 +226,11 @@ class StageHandler(Stage):
             + self.hand_pose_weight * hand_qpos_reward
             + self.action_regularization_weight * action_regularization
             + non_target_activation_penality
-            + time_penality
+            # + time_penality
         )
 
         reward[info["success"]] += 3
-        
+
         reward /= 16.0
 
         tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
@@ -237,9 +238,9 @@ class StageHandler(Stage):
 
         rot_dot_product = torch.abs(torch.sum(wrist_rot * desired_wrist_rot, dim=-1))
         rot_dot_product = torch.clamp(rot_dot_product, min=0.0, max=1.0)
-        
+
         theta = torch.acos(rot_dot_product)
-        theta_penalty = -2 *torch.tanh(0.3 * theta)
+        theta_penalty = -2 * torch.tanh(0.3 * theta)
 
         reward_dict = dict(
             tcp_distance_reward=tcp_distance_reward.mean(dim=-1).item(),

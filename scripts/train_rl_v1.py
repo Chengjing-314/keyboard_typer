@@ -1,5 +1,4 @@
-
-## CUDA_VISIBLE_DEVICES=5 python3 scripts/train_rl_v1.py --exp_name 
+## CUDA_VISIBLE_DEVICES=5 python3 scripts/train_rl_v1.py --exp_name
 ## CUDA_VISIBLE_DEVICES=6 python3 scripts/train_rl_v1.py --exp_name t85
 
 import os
@@ -35,7 +34,6 @@ class Args:
             eval_freq=10,
         )
     )
-    
 
 
 if __name__ == "__main__":
@@ -45,12 +43,11 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    args.stage_config.action_regularization_weight = 8.0
+    args.stage_config.action_regularization_weight = 12.0
     args.stage_config.hand_pose_weight = 5.0
-    args.stage_config.actuation_reward_weight = 3.0
+    args.stage_config.actuation_reward_weight = 5.0
     args.stage_config.distance_reward_weight = 1.0
-    args.stage_config.velocity_penalty_weight = 8.0
-
+    args.stage_config.velocity_penalty_weight = 12.0
 
     # env setup
     train_env_kwargs = dict(
@@ -67,10 +64,18 @@ if __name__ == "__main__":
         sim_backend="gpu",
     )
     env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_envs, stage_config=args.stage_config, **train_env_kwargs
+        args.env_id,
+        config=args.typer_config,
+        num_envs=args.num_envs,
+        stage_config=args.stage_config,
+        **train_env_kwargs,
     )
     eval_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
+        args.env_id,
+        config=args.typer_config,
+        num_envs=args.num_eval_envs,
+        stage_config=args.stage_config,
+        **eval_env_kwargs,
     )
     # env = gym.make(args.env_id, num_envs=args.num_envs, **env_kwargs)
     # eval_env = gym.make(args.env_id, num_envs=args.num_eval_envs, **env_kwargs)
