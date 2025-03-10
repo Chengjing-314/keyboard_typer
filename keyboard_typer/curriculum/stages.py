@@ -202,18 +202,19 @@ class StageHandler(Stage):
         press_ratio = (target_key_qpos - key_default_qpos) / ((0.003 - key_default_qpos) + 1e-6)
         key_actuation_reward = torch.tanh(press_ratio)
 
-        # num_keys = keyboard_qpos.shape[1]
-        # all_key_indices = torch.arange(num_keys, device=target_key_indices.device).repeat(
-        #     num_envs, 1
-        # )
-        # mask = all_key_indices != current_target_key_indices.unsqueeze(-1)
-        # non_target_key_indices = all_key_indices[mask].view(num_envs, -1)
-        # non_target_key_qpos = keyboard_qpos[
-        #     torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
-        # ]
-        # non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
-        # exist_wrong_key = non_target_key_activation_count > 0
-        # non_target_activation_penality = exist_wrong_key * -0.1
+        num_keys = keyboard_qpos.shape[1]
+        all_key_indices = torch.arange(num_keys, device=target_key_indices.device).repeat(
+            num_envs, 1
+        )
+        mask = all_key_indices != current_target_key_indices.unsqueeze(-1)
+        non_target_key_indices = all_key_indices[mask].view(num_envs, -1)
+        non_target_key_qpos = keyboard_qpos[
+            torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
+        ]
+        non_target_key_activation_count = (non_target_key_qpos > 0.002).sum(dim=-1)
+        exist_wrong_key = non_target_key_activation_count > 0
+        # non_target_activation_penality = exist_wrong_key * -1.0
+        non_target_activation_penality = exist_wrong_key * -8.0
         # time_penality = -0.05  # This is needed to prevent the agent from not pressing the key
 
         arm_action = action[:, :7]
@@ -225,11 +226,12 @@ class StageHandler(Stage):
             + self.actuation_reward_weight * key_actuation_reward
             # + self.hand_pose_weight * hand_qpos_reward
             + self.action_regularization_weight * action_regularization
-            # + non_target_activation_penality
+            + non_target_activation_penality
             # + time_penality
         )
 
-        reward[info["success"]] += 3
+        # reward[info["success"]] += 3
+        reward[info["success"]] += 16 
 
         reward /= 16.0
 
@@ -248,8 +250,8 @@ class StageHandler(Stage):
             key_actuation_reward=key_actuation_reward.mean(dim=-1).item(),
             velocity_penalty=qvel_penalty.mean(dim=-1).item(),  # Placeholder
             # velocity_penalty=0,
-            # wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
-            wrong_key_penalty=0,
+            wrong_key_penalty=non_target_activation_penality.mean(dim=-1).item(),
+            # wrong_key_penalty=0,
             # hand_qpos_reward=hand_qpos_reward.mean(dim=-1).item(),
             hand_qpos_reward=0,
             action_regularization=action_regularization.mean(dim=-1).item(),

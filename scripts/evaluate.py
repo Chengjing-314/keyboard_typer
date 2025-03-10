@@ -39,23 +39,34 @@ if __name__ == "__main__":
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
 
-    args.agent_config.load_from = "/data/chengjingyuan/keyboard_typer/logs/w_non_target_pen/ckpts/ckpt_941.pt"
+    args.agent_config.load_from = (
+        "/data/chengjingyuan/keyboard_typer/logs/fixed_hand/ckpts/ckpt_171.pt"
+    )
 
     eval_env_kwargs = dict(
         obs_mode=args.obs_mode,
-        control_mode="pd_joint_delta_pos",
+        # control_mode="pd_joint_delta_pos",
+        control_mode="arm_delta_pos_hand_pd_joint_pos",
         render_mode="rgb_array",
         sim_backend="gpu",
     )
 
     fake_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
+        args.env_id,
+        config=args.typer_config,
+        num_envs=args.num_eval_envs,
+        stage_config=args.stage_config,
+        **eval_env_kwargs,
     )
     if isinstance(fake_env.action_space, gym.spaces.Dict):
         fake_env = FlattenActionSpaceWrapper(fake_env)
 
     eval_env = gym.make(
-        args.env_id, config=args.typer_config, num_envs=args.num_eval_envs, stage_config=args.stage_config, **eval_env_kwargs
+        args.env_id,
+        config=args.typer_config,
+        num_envs=args.num_eval_envs,
+        stage_config=args.stage_config,
+        **eval_env_kwargs,
     )
     if isinstance(eval_env.action_space, gym.spaces.Dict):
         eval_env = FlattenActionSpaceWrapper(eval_env)

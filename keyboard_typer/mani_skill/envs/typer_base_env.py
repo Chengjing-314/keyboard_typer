@@ -129,14 +129,16 @@ class TyperBaseEnv(BaseEnv):
 
         if self.config.bimanual:
             for agent in self.agent.agents:
-                agent.reset()
+                # agent.reset()
+                agent.index_poke()
         else:
-            self.agent.reset()
+            # self.agent.reset()
+            self.agent.index_poke()
 
         self.time_step = 0
 
-        # self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
-        # self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
 
     @property
     def _default_human_render_camera_configs(self):

@@ -64,7 +64,33 @@ class XArm7AbilityBase(BaseAgent):
                 ]
                 + [0] * 10
             ),
-        )
+        ),
+        index_poke=Keyframe(
+            pose=sapien.Pose([0, 0.4, 0], [1, 0, 0, 0]),
+            qpos=np.array(
+                [
+                    -0.03141593,
+                    0.13439035,
+                    0.03141593,
+                    0.23911011,
+                    3.14159265,
+                    1.46433124,
+                    -0.00349066,
+                ]
+                + [
+                    0.0,
+                    0.394,
+                    2.094,
+                    2.094,
+                    2.094,
+                2.094,
+                1.089,
+                2.659,
+                2.659,
+                2.659,
+                ]
+            ),
+        ),
     )
 
     arm_joint_names = [
@@ -157,6 +183,7 @@ class XArm7AbilityBase(BaseAgent):
         controller_configs = dict(
             pd_joint_pos=dict(arm=arm_pd_joint_pos, hand=hand_pd_joint_pos),
             pd_joint_delta_pos=dict(arm=arm_pd_delta_pos, hand=hand_pd_delta_pos),
+            arm_delta_pos_hand_pd_joint_pos=dict(arm=arm_pd_delta_pos, hand=hand_pd_joint_pos),
             arm_pd_ee_pose_hand_pd_joint_pos=dict(arm=arm_pd_pose_ee, hand=hand_pd_joint_pos),
         )
 
@@ -336,6 +363,11 @@ class XArm7AbilityBase(BaseAgent):
         kf = self.keyframes["rest"]
         self.robot.set_qpos(kf.qpos)
         self.robot.set_pose(kf.pose)
+    
+    def index_poke(self):
+        kf = self.keyframes["index_poke"]
+        self.robot.set_qpos(kf.qpos)
+        self.robot.set_pose(kf.pose)
 
 
 @register_agent()
@@ -359,7 +391,33 @@ class XArm7AbilityRight(XArm7AbilityBase):
                 ]
                 + [0] * 10
             ),
-        )
+        ),
+        index_poke=Keyframe(
+            pose=sapien.Pose([0, -0.4, 0], [1, 0, 0, 0]),
+            qpos=np.array(
+                [
+                    -0.03141593,
+                    0.13439035,
+                    0.03141593,
+                    0.23911011,
+                    3.14159265,
+                    1.46433124,
+                    -0.00349066,
+                ]
+                + [
+                    0.0,
+                    0.394,
+                    2.094,
+                    2.094,
+                    2.094,
+                    2.094,
+                    1.089,
+                    2.659,
+                    2.659,
+                    2.659,
+                ]
+            ),
+        ),
     )
 
 
@@ -384,7 +442,33 @@ class XArm7AbilityLeft(XArm7AbilityBase):
                 ]
                 + [0] * 10
             ),
-        )
+        ),
+        index_poke=Keyframe(
+            pose=sapien.Pose([0, 0.4, 0], [1, 0, 0, 0]),
+            qpos=np.array(
+                [
+                    -0.03141593,
+                    0.13439035,
+                    0.03141593,
+                    0.23911011,
+                    3.14159265,
+                    1.46433124,
+                    -0.00349066,
+                ]
+                + [
+                    0.0,
+                    0.394,
+                    2.094,
+                    2.094,
+                    2.094,
+                    2.094,
+                    1.089,
+                    2.659,
+                    2.659,
+                    2.659,
+                ]
+            ),
+        ),
     )
 
 

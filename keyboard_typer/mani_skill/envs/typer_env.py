@@ -175,7 +175,7 @@ class TyperEnv(TyperBaseEnv):
                 - target_finger_pos,
                 dim=-1,
             )
-            <= 0.01
+            <= 0.005
         )
 
         current_target_key_indices = self.target_key_indices[
@@ -189,10 +189,14 @@ class TyperEnv(TyperBaseEnv):
         pressed = target_key_qpos > 0.0025
 
         self.key_press_progress[pressed] = torch.clamp(
-            self.key_press_progress[pressed] + 1, 0, self.num_chars - 1
+            self.key_press_progress[pressed] + 1, 0, self.num_chars
         )
 
-        finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
+        finished = self.key_press_progress == (self.num_chars)
+
+        self.key_press_progress[pressed] = torch.clamp(
+            self.key_press_progress[pressed], 0, self.num_chars - 1
+        )  # Because we obtain observation after evaluate, we need to clamp the key_press_progress after checking finished
 
         return {"success": reached & finished}
 
