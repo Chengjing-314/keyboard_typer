@@ -83,7 +83,8 @@ class TyperBaseEnv(BaseEnv):
             link.set_disable_gravity(True)
 
         for ac_joint in self.keyboard.get_active_joints():
-            ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
+            # ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
+            ac_joint.set_drive_properties(stiffness=100, damping=100, force_limit=3e-5)
         # active_joints = self.keyboard.get_active_joints()
         # if self.num_envs > 1:
         #     self.keyboard.set_joint_drive_targets(
