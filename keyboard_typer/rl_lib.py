@@ -911,10 +911,13 @@ class PPO_typer(PPO):
                         #     )
                         #     - self.eval_env.unwrapped.agent.robot.qpos[:, -10:]
                         # )
-
+                        thumb_q1 = action[:, -11]
+                        thumb_q2 = action[:, -16]
                         action[:, -10:] = self.eval_env.unwrapped.single_finger.repeat(
                             (self.eval_env.num_envs, 1)
                         )
+                        action[:, -11] = thumb_q1
+                        action[:, -16] = thumb_q2
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
                             self.eval_env.step(action)
                         )
@@ -1007,8 +1010,11 @@ class PPO_typer(PPO):
                 #     self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
                 #     - self.env.unwrapped.agent.robot.qpos[:, -10:]
                 # )
-
+                thumb_q1 = action[:, -11]
+                thumb_q2 = action[:, -16]
                 action[:, -10:] = self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
+                action[:, -11] = thumb_q1
+                action[:, -16] = thumb_q2
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
@@ -1273,7 +1279,11 @@ class PPO_typer(PPO):
         for i in range(self.config.num_eval_steps):
             with torch.no_grad():
                 action = self.agent.get_action(eval_obs, deterministic=True)
+                thumb_q1 = action[:, -11]
+                thumb_q2 = action[:, -16]
                 action[:, -10:] = self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
+                action[:, -11] = thumb_q1
+                action[:, -16] = thumb_q2
                 eval_obs, _, eval_terminations, eval_truncations, eval_infos = self.eval_env.step(
                     action
                 )

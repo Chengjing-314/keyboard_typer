@@ -216,7 +216,7 @@ class StageHandler(Stage):
         non_target_key_activation_count = (non_target_key_qpos > 0.0025).sum(dim=-1)
         exist_wrong_key = non_target_key_activation_count > 0
         # non_target_activation_penality = exist_wrong_key * -1.0
-        non_target_activation_penality = exist_wrong_key * -self.wrong_key_penality_weight 
+        non_target_activation_penality = exist_wrong_key * -self.wrong_key_penality_weight
         # time_penality = -0.05  # This is needed to prevent the agent from not pressing the key
 
         arm_action = action[:, :7]
@@ -224,15 +224,15 @@ class StageHandler(Stage):
 
         reward = (
             self.distance_reward_weight * tcp_distance_reward
-            + self.velocity_penalty_weight * qvel_penalty
+            # + self.velocity_penalty_weight * qvel_penalty
             + self.actuation_reward_weight * key_actuation_reward
             # + self.hand_pose_weight * hand_qpos_reward
             + self.action_regularization_weight * action_regularization
-            + non_target_activation_penality
+            # + non_target_activation_penality
             # + time_penality
         )
 
-        reward[info["success"]] += 5 
+        reward[info["success"]] += 5
 
         reward /= 16.0
 

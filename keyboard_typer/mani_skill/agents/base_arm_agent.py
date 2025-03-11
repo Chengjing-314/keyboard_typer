@@ -22,9 +22,9 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class RobotConstants:
-    ARM_STIFFNESS: float = 500
-    ARM_DAMPING: float = 100
-    ARM_FORCE_LIMIT: float = 50
+    ARM_STIFFNESS: float = 5000
+    ARM_DAMPING: float = 1000
+    ARM_FORCE_LIMIT: float = 500
 
     HAND_STIFFNESS: float = 500
     HAND_DAMPING: float = 100
@@ -83,11 +83,11 @@ class XArm7AbilityBase(BaseAgent):
                     2.094,
                     2.094,
                     2.094,
-                2.094,
-                1.089,
-                2.659,
-                2.659,
-                2.659,
+                    2.094,
+                    1.089,
+                    2.659,
+                    2.659,
+                    2.659,
                 ]
             ),
         ),
@@ -363,7 +363,7 @@ class XArm7AbilityBase(BaseAgent):
         kf = self.keyframes["rest"]
         self.robot.set_qpos(kf.qpos)
         self.robot.set_pose(kf.pose)
-    
+
     def index_poke(self):
         kf = self.keyframes["index_poke"]
         self.robot.set_qpos(kf.qpos)

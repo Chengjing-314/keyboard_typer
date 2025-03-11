@@ -48,14 +48,14 @@ if __name__ == "__main__":
     args.stage_config.distance_reward_weight = 5.0
     # Regularization parameters
     args.stage_config.velocity_penalty_weight = 0.0
-    args.stage_config.action_regularization_weight = 16.0
+    args.stage_config.action_regularization_weight = 0.0  # was 16 for baisc, 10 and 0
     args.stage_config.hand_pose_weight = 0.0
     args.stage_config.wrong_key_penality_weight = 0.0
 
     # args.agent_config.load_from = (
     #     "/data/chengjingyuan/keyboard_typer/logs/fixed_hand/ckpts/ckpt_141.pt"
     # )
-    
+
     # args.agent_config.load_from = (
     #     "/data/chengjingyuan/keyboard_typer/logs/reset_init_scratch/ckpts/ckpt_181.pt"
     # )
