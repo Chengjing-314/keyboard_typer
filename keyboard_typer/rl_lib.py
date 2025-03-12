@@ -775,15 +775,15 @@ class PPO_typer(PPO):
         self.wrong_key_penalty = 0
         self.hand_qpos_reward = 0
         self.action_regularization = 0
+        self.penetration_penalty = 0
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
         self.key_actuation_reward += reward_dict["key_actuation_reward"]
-        self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
-        self.velocity_penalty += reward_dict["velocity_penalty"]
         self.wrong_key_penalty += reward_dict["wrong_key_penalty"]
-        self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
         self.action_regularization += reward_dict["action_regularization"]
+        self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
+        self.penetration_penalty += reward_dict["penetration_penalty"]
 
     def process_obs(self, obs: dict):
         agent_dict = obs["agent"]
@@ -911,13 +911,6 @@ class PPO_typer(PPO):
                         #     )
                         #     - self.eval_env.unwrapped.agent.robot.qpos[:, -10:]
                         # )
-                        thumb_q1 = action[:, -11]
-                        thumb_q2 = action[:, -16]
-                        action[:, -10:] = self.eval_env.unwrapped.single_finger.repeat(
-                            (self.eval_env.num_envs, 1)
-                        )
-                        action[:, -11] = thumb_q1
-                        action[:, -16] = thumb_q2
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
                             self.eval_env.step(action)
                         )
@@ -1006,15 +999,6 @@ class PPO_typer(PPO):
 
                 # TRY NOT TO MODIFY: execute the game and log data.
                 #!!
-                # action[:, -10:] = (
-                #     self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
-                #     - self.env.unwrapped.agent.robot.qpos[:, -10:]
-                # )
-                thumb_q1 = action[:, -11]
-                thumb_q2 = action[:, -16]
-                action[:, -10:] = self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
-                action[:, -11] = thumb_q1
-                action[:, -16] = thumb_q2
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
@@ -1244,14 +1228,12 @@ class PPO_typer(PPO):
                     {
                         "rewards/tcp_distance": self.tcp_distance_reward / self.config.num_steps,
                         "rewards/key_actuation": self.key_actuation_reward / self.config.num_steps,
-                        "rewards/rotation_distance": self.rotation_distance_reward
-                        / self.config.num_steps,
-                        "rewards/velocity_penalty": self.velocity_penalty / self.config.num_steps,
                         "rewards/wrong_key_penalty": self.wrong_key_penalty
                         / self.config.num_steps,
-                        "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
                         "rewards/action_regularization": self.action_regularization
                         / self.config.num_steps,
+                        "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
+                        "rewards/penetration_penalty": self.penetration_penalty / self.config.num_steps,
                     },
                     step=global_step,
                 )
@@ -1279,11 +1261,6 @@ class PPO_typer(PPO):
         for i in range(self.config.num_eval_steps):
             with torch.no_grad():
                 action = self.agent.get_action(eval_obs, deterministic=True)
-                thumb_q1 = action[:, -11]
-                thumb_q2 = action[:, -16]
-                action[:, -10:] = self.env.unwrapped.single_finger.repeat((self.env.num_envs, 1))
-                action[:, -11] = thumb_q1
-                action[:, -16] = thumb_q2
                 eval_obs, _, eval_terminations, eval_truncations, eval_infos = self.eval_env.step(
                     action
                 )

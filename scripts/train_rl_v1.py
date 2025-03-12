@@ -44,12 +44,12 @@ if __name__ == "__main__":
     args.agent_config.obs = args.obs_mode
 
     # Task parameters
-    args.stage_config.actuation_reward_weight = 8.0
-    args.stage_config.distance_reward_weight = 5.0
+    args.stage_config.actuation_reward_weight = 12.0 # was 12 for first exp
+    args.stage_config.distance_reward_weight = 15.0
     # Regularization parameters
-    args.stage_config.velocity_penalty_weight = 0.0
-    args.stage_config.action_regularization_weight = 0.0  # was 16 for baisc, 10 and 0
-    args.stage_config.hand_pose_weight = 0.0
+    args.stage_config.hand_qpos_reward_weight = 30.0 
+    args.stage_config.penetration_penalty_weight = 2.0 
+    args.stage_config.action_regularization_weight = 1.0
     args.stage_config.wrong_key_penality_weight = 0.0
 
     # args.agent_config.load_from = (

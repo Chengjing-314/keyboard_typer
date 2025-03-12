@@ -22,9 +22,9 @@ from dataclasses import dataclass
 
 @dataclass(frozen=True)
 class RobotConstants:
-    ARM_STIFFNESS: float = 5000
-    ARM_DAMPING: float = 1000
-    ARM_FORCE_LIMIT: float = 500
+    ARM_STIFFNESS: float = 500
+    ARM_DAMPING: float = 100
+    ARM_FORCE_LIMIT: float = 50
 
     HAND_STIFFNESS: float = 500
     HAND_DAMPING: float = 100

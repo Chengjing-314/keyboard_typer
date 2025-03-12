@@ -47,8 +47,7 @@ class TyperEnv(TyperBaseEnv):
         self.target_key_pos = None
         self.target_finger = None
         self.key_default_qpos = None
-        self.num_chars = 3
-        super().__init__(*args, config=config, robot_uids="", **kwargs)
+        self.num_chars = 1
         self.single_finger = torch.tensor(
             [
                 0.0,
@@ -62,8 +61,8 @@ class TyperEnv(TyperBaseEnv):
                 2.659,
                 2.659,
             ],
-            device=self.device,
         )
+        super().__init__(*args, config=config, robot_uids="", **kwargs)
 
     def _initialize_episode(self, env_idx, options):
         super()._initialize_episode(env_idx, options)
@@ -72,7 +71,8 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos = low + (high - low) * 1 / 3
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
-        self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        # self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        self.desired_hand_qpos = self.single_finger.to(self.device) 
         self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:]
         if self.stage in self.handlers:
             if self.target_key_pos is None:
@@ -187,18 +187,20 @@ class TyperEnv(TyperBaseEnv):
         ]
 
         pressed = target_key_qpos > 0.0025
+        
+        key_success = reached & pressed
 
-        self.key_press_progress[pressed] = torch.clamp(
-            self.key_press_progress[pressed] + 1, 0, self.num_chars
+        self.key_press_progress[key_success] = torch.clamp(
+            self.key_press_progress[key_success] + 1, 0, self.num_chars
         )
 
-        finished = self.key_press_progress == (self.num_chars)
+        finished = self.key_press_progress == self.num_chars
 
-        self.key_press_progress[pressed] = torch.clamp(
-            self.key_press_progress[pressed], 0, self.num_chars - 1
-        )  # Because we obtain observation after evaluate, we need to clamp the key_press_progress after checking finished
+        self.key_press_progress = torch.clamp(
+            self.key_press_progress, 0, self.num_chars - 1
+)
 
-        return {"success": reached & finished}
+        return {"success": finished, "pressed": key_success} 
 
     def get_reward_details(self):
         return self.reward_dict
