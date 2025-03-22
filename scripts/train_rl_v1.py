@@ -44,13 +44,14 @@ if __name__ == "__main__":
     args.agent_config.obs = args.obs_mode
 
     # Task parameters
-    args.stage_config.actuation_reward_weight = 12.0 # was 12 for first exp
+    args.stage_config.actuation_reward_weight = 12.0  # was 12 for first exp
     args.stage_config.distance_reward_weight = 15.0
     # Regularization parameters
-    args.stage_config.hand_qpos_reward_weight = 30.0 
-    args.stage_config.penetration_penalty_weight = 2.0 
+    args.stage_config.hand_qpos_reward_weight = 5.0
+    args.stage_config.penetration_penalty_weight = 2.0
     args.stage_config.action_regularization_weight = 1.0
     args.stage_config.wrong_key_penality_weight = 0.0
+    args.stage_config.penetration_zone = 1e-3
 
     # args.agent_config.load_from = (
     #     "/data/chengjingyuan/keyboard_typer/logs/fixed_hand/ckpts/ckpt_141.pt"
@@ -63,16 +64,16 @@ if __name__ == "__main__":
     # env setup
     train_env_kwargs = dict(
         obs_mode=args.obs_mode,
-        # control_mode="pd_joint_delta_pos",
-        control_mode="arm_delta_pos_hand_pd_joint_pos",
+        control_mode="pd_joint_delta_pos",
+        # control_mode="arm_delta_pos_hand_pd_joint_pos",
         render_mode="rgb_array",
         sim_backend="gpu",
     )
 
     eval_env_kwargs = dict(
         obs_mode=args.obs_mode,
-        # control_mode="pd_joint_delta_pos",
-        control_mode="arm_delta_pos_hand_pd_joint_pos",
+        control_mode="pd_joint_delta_pos",
+        # control_mode="arm_delta_pos_hand_pd_joint_pos",
         render_mode="rgb_array",
         sim_backend="gpu",
     )

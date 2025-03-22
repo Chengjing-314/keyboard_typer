@@ -20,7 +20,7 @@ class StageConfig:
     action_regularization_weight: float = 8.0
     wrong_key_penality_weight: float = 0.1
     penetration_penalty_weight: float = 0.1
-
+    penetration_zone: float = 1e-3
 
 class Stage(ABC):
     def __init__(self, env, config: StageConfig):
@@ -32,6 +32,7 @@ class Stage(ABC):
         self.penetration_penalty_weight = config.penetration_penalty_weight
         self.action_regularization_weight = config.action_regularization_weight
         self.wrong_key_penality_weight = config.wrong_key_penality_weight
+        self.penetration_zone = config.penetration_zone
 
     @abstractmethod
     def initialize(self, *args, **kwargs):
@@ -204,7 +205,7 @@ class StageHandler(Stage):
         non_target_finger_z = finger_tip_z[finger_mask].view(num_envs, -1)
 
         # Define keyboard height threshold (assuming key_default_qpos is the resting height)
-        keyboard_height_threshold = target_key_pos[:,0,2] + 0.005 
+        keyboard_height_threshold = target_key_pos[:,0,2] + self.penetration_zone 
         min_non_target_finger_z = torch.min(non_target_finger_z, dim=-1)[0]
 
         # Compute penetration depth (how far below the keyboard they go)
@@ -234,8 +235,10 @@ class StageHandler(Stage):
         # Hand Qpos Reward
         # ----------------------------
         hand_qpos = qpos[:, -10:]
-        qpos_distance = torch.norm(hand_qpos - desired_hand_qpos, dim=-1)
-        hand_qpos_reward = torch.exp(-qpos_distance / 2.5)
+        hand_qpos_weight = torch.tensor([1.0,0.3, 1.0, 1.0, 1.0, 1.0, 0.3, 1.0, 1.0, 1.0], device=hand_qpos.device).unsqueeze(0)
+        weighted_hand_qpos_distance = (hand_qpos - desired_hand_qpos) * hand_qpos_weight
+        qpos_distance = torch.norm(weighted_hand_qpos_distance, dim=-1)
+        hand_qpos_reward = torch.exp(-qpos_distance / 5.0) # was 2.5
         
         # ----------------------------
         # Non-target Key Penalty
@@ -272,10 +275,11 @@ class StageHandler(Stage):
             + self.penetration_penalty_weight * penetration_penalty
         )
 
+        reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.hand_qpos_reward_weight + self.penetration_penalty_weight)
+
         # Apply a bonus for success.
         reward[info["pressed"]] += 5
-        reward[info["success"]] += 10
-        reward /= (5 + 1 + self.distance_reward_weight + self.actuation_reward_weight + self.hand_qpos_reward_weight + self.penetration_penalty_weight)
+        reward[info["success"]] += 10 
         # reward /= (
         #     5
         #     + self.actuation_reward_weight
