@@ -30,7 +30,7 @@ class Args:
         default_factory=lambda: PPOConfig(
             exp_name="TyperEnv",
             exp_version="v1",
-            total_timesteps=5000_0000,
+            total_timesteps=8000_0000,
             eval_freq=10,
         )
     )
@@ -42,6 +42,7 @@ if __name__ == "__main__":
     args.trainer.exp_name = args.exp_name
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
+    args.seed = 1
 
     # Task parameters
     args.stage_config.actuation_reward_weight = 12.0  # was 12 for first exp

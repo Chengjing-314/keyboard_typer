@@ -1,14 +1,19 @@
-import os
 from dataclasses import dataclass, field
+import os
 
 import gymnasium as gym
-
-import tyro
+from keyboard_typer.curriculum.stages import StageConfig
+from keyboard_typer.mani_skill.envs.typer_env import TyperEnv, TyperEnvConfig
+from keyboard_typer.rl_lib import (
+    Agent,
+    AgentConfig,
+    ManiSkillVectorEnv,
+    PPOConfig,
+    PPO_typer,
+)
 from mani_skill.utils.wrappers.flatten import FlattenActionSpaceWrapper
 from mani_skill.utils.wrappers.record import RecordEpisode
-from keyboard_typer.mani_skill.envs.typer_env import TyperEnv, TyperEnvConfig  # noqa
-from keyboard_typer.rl_lib import PPO_typer, PPOConfig, Agent, AgentConfig, ManiSkillVectorEnv
-from keyboard_typer.curriculum.stages import StageConfig
+import tyro
 
 
 @dataclass
@@ -40,7 +45,7 @@ if __name__ == "__main__":
     args.agent_config.obs = args.obs_mode
 
     args.agent_config.load_from = (
-        "/data/chengjingyuan/keyboard_typer/logs/fixed_hand/ckpts/ckpt_171.pt"
+        "/data/chengjingyuan/keyboard_typer/logs/new_eva_base_seed1/ckpts/ckpt_771.pt"
     )
 
     eval_env_kwargs = dict(
@@ -78,11 +83,11 @@ if __name__ == "__main__":
         output_dir=eval_output_dir,
         save_trajectory=False,
         trajectory_name="trajectory",
-        max_steps_per_video=args.trainer.num_eval_steps,
+        max_steps_per_video=200, #! This is hardcoded at the moment
         video_fps=30,
     )
     eval_env = ManiSkillVectorEnv(
-        eval_env, args.num_eval_envs, ignore_terminations=True, **eval_env_kwargs
+        eval_env, args.num_eval_envs, **eval_env_kwargs # ignore_terminations=False 
     )
     fake_env = ManiSkillVectorEnv(fake_env, args.num_eval_envs, **eval_env_kwargs)
 
@@ -90,6 +95,44 @@ if __name__ == "__main__":
 
     trainer = PPO_typer(config=args.trainer, agent=agent, env=fake_env, eval_env=eval_env)
 
-    trainer.evaluate(save_traj=True)
+    traj = trainer.evaluate(save_traj=True)
+    
+    traj = traj.squeeze(1)
+    
+    import numpy as np
+
+    def interpolate_joint_angles(angles, x):
+
+        """
+        Interpolates between each consecutive pair of joint angles.
+        
+        Parameters:
+          angles: np.array of shape (n, 17) -- original joint angles
+          x: int -- number of intermediate steps between each consecutive pair
+          
+        Returns:
+          np.array of shape ( (n-1)*(x+1) + 1, 17 ) with interpolated joint angles.
+        """
+        n, num_joints = angles.shape
+        interpolated = []  # to store the new sequence of joint angles
+
+        for i in range(n - 1):
+            start = angles[i]
+            end = angles[i + 1]
+            # Create x+2 points including both endpoints.
+            # We remove the last point to avoid duplicates except for the final pair.
+            t_values = np.linspace(0, 1, x + 2)
+            for t in t_values[:-1]:
+                interp_point = (1 - t) * start + t * end
+                interpolated.append(interp_point)
+        # Append the last point of the original sequence.
+        interpolated.append(angles[-1])
+        return np.array(interpolated)
+
+    traj_interpolated = interpolate_joint_angles(traj, 10)
+    np.save("interpolated_trajectory.npy", traj_interpolated)
+    np.save("original_trajectory.npy", traj)
+        
 
     eval_env.close()
+    fake_env.close()

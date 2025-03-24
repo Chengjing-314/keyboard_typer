@@ -292,10 +292,10 @@ class PPOConfig:
 
     total_timesteps: int = 5_500_000
     num_steps: int = MAX_EPISODE_STEPS
-    num_eval_steps: int = MAX_EPISODE_STEPS
+    num_eval_steps: int = MAX_EPISODE_STEPS * 2
     num_minibatches: int = 32
     update_epochs: int = 4
-    eval_freq: int = 8
+    eval_freq: int = 6
 
     learning_rate: float = 3e-4
     anneal_lr: bool = False
@@ -310,6 +310,7 @@ class PPOConfig:
     target_kl: float = 0.1
     ent_coef: float = 0.0
     vf_coef: float = 0.5
+    # vf_coef: float = 0.1
     max_grad_norm: float = 0.5
 
     obs_mode = "state"
@@ -904,17 +905,9 @@ class PPO_typer(PPO):
                 for i in range(self.config.num_eval_steps):
                     with torch.no_grad():
                         action = self.agent.get_action(eval_obs, deterministic=True)
-                        #!!
-                        # action[:, -10:] = (
-                        #     self.eval_env.unwrapped.single_finger.repeat(
-                        #         (self.eval_env.num_envs, 1)
-                        #     )
-                        #     - self.eval_env.unwrapped.agent.robot.qpos[:, -10:]
-                        # )
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
                             self.eval_env.step(action)
                         )
-                        # eval_obs = self.normalize_qpos(eval_obs)
                         if "final_info" in eval_infos:
                             mask = eval_infos["_final_info"]
                             eps_lens.append(
@@ -956,7 +949,6 @@ class PPO_typer(PPO):
                     if self.config.use_wandb:
                         wandb.log({"eval/fail_rate": failures.mean()}, step=global_step)
                     console.log(f"eval_fail_rate={failures.mean()}")
-
                 console.log(f"eval_episodic_return={returns.mean()}")
                 for key, value in return_components.items():
                     console.log(f"eval_episodic_return_{key}={value.mean()}")
@@ -1258,6 +1250,7 @@ class PPO_typer(PPO):
         failures = []
         if save_traj:
             traj = []
+            episode_ids = []
         for i in range(self.config.num_eval_steps):
             with torch.no_grad():
                 action = self.agent.get_action(eval_obs, deterministic=True)
@@ -1267,6 +1260,7 @@ class PPO_typer(PPO):
                 traj.append(self.eval_env.unwrapped.agent.robot.qpos.cpu().numpy())
                 if "final_info" in eval_infos:
                     mask = eval_infos["_final_info"]
+                    episode_ids.append(i)
                     eps_lens.append(eval_infos["final_info"]["elapsed_steps"][mask].cpu().numpy())
                     returns.append(eval_infos["final_info"]["episode"]["r"][mask].cpu().numpy())
                     if "reward_components" in eval_infos["final_info"]:
@@ -1300,6 +1294,14 @@ class PPO_typer(PPO):
                 os.path.join(self.config.exp_root, self.config.exp_name, "traj.npy"),
                 np.array(traj),
             )
+            np.save(
+                os.path.join(self.config.exp_root, self.config.exp_name, "episode_ids.npy"),
+                np.array(episode_ids),
+            )
+            
+            console.log(f"saved {len(episode_ids)} episodes to {self.config.exp_root}/{self.config.exp_name}")
+            
+        return np.array(traj)
 
     def log_extra(self, global_step):
         pass

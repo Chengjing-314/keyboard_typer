@@ -225,9 +225,7 @@ class StageHandler(Stage):
 
         # Define actuation threshold
         actuation_threshold = 0.0025
-
         press_progress = torch.clamp(target_key_qpos / actuation_threshold, 0, 1)
-
         key_actuation_reward = torch.exp(-(1 - press_progress) / 0.5) # 0.5 for 1st exp
         
         
@@ -272,13 +270,14 @@ class StageHandler(Stage):
             self.distance_reward_weight * tcp_distance_reward
             + self.actuation_reward_weight * key_actuation_reward
             + self.hand_qpos_reward_weight * hand_qpos_reward
-            + self.penetration_penalty_weight * penetration_penalty
+            # + self.penetration_penalty_weight * penetration_penalty
         )
 
-        reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.hand_qpos_reward_weight + self.penetration_penalty_weight)
+        # reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.penetration_penalty_weight) #! no hand qpos reward for testing 
+        reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.hand_qpos_reward_weight) #! no hand qpos reward for testing 
 
         # Apply a bonus for success.
-        reward[info["pressed"]] += 5
+        # reward[info["pressed"]] += 5
         reward[info["success"]] += 10 
         # reward /= (
         #     5

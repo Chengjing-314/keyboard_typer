@@ -130,11 +130,11 @@ class TyperBaseEnv(BaseEnv):
 
         if self.config.bimanual:
             for agent in self.agent.agents:
-                # agent.reset()
-                agent.index_poke()
+                agent.reset()
+                # agent.index_poke()
         else:
-            # self.agent.reset()
-            self.agent.index_poke()
+            self.agent.reset()
+            # self.agent.index_poke()
 
         self.time_step = 0
 
