@@ -224,11 +224,16 @@ class TyperEnv(TyperBaseEnv):
 if __name__ == "__main__":
     config = TyperEnvConfig()
 
+    from keyboard_typer.curriculum.stages import StageConfig
+
+    stage_config = StageConfig()
+
     n_envs = 1
 
     env = gym.make(
         "TyperEnv-v0",
         config=config,
+        stage_config=stage_config,
         render_mode="human",
         num_envs=n_envs,
         obs_mode="state_dict",
@@ -334,17 +339,27 @@ if __name__ == "__main__":
         ]
     )
 
-    # while True:
-    #     env.step(action)
-    #     env.unwrapped.render_human()
-
-    for i in range(int(1e3)):
-        if i < 5e2:
-            env.step(action)
-        else:
-            env.step(action_raise)
+    while True:
+        env.step(action)
         env.unwrapped.render_human()
-        print(env.unwrapped.keyboard.qpos[0, 42].item())
+        # __import__("IPython").embed(header="typer_env.py:345")
+        #
+        qpos = env.unwrapped.keyboard.qpos
+
+        # Find indices where qpos values are greater than threshold
+        pressed_keys = torch.where(qpos > 1e-4)[0]
+
+        # Check if any keys are pressed
+        if len(pressed_keys) > 0:
+            print("Keyboard pressed", pressed_keys)
+
+    # for i in range(int(1e3)):
+    #     if i < 5e2:
+    #         env.step(action)
+    #     else:
+    #         env.step(action_raise)
+    #     env.unwrapped.render_human()
+    #     print(env.unwrapped.keyboard.qpos[0, 42].item())
 
     # for i, q in enumerate(traj):
     #     # env.step(q)

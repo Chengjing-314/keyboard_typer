@@ -92,7 +92,7 @@ class TyperBaseEnv(BaseEnv):
         #         joint_indices=torch.arange(
         #             len(active_joints), device=self.device, dtype=torch.int32
         #         ),
-    
+
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
             self.scene,
@@ -133,8 +133,8 @@ class TyperBaseEnv(BaseEnv):
                 # agent.reset()
                 agent.index_poke()
         else:
-            # self.agent.reset()
-            self.agent.index_poke()
+            self.agent.reset()
+            # self.agent.index_poke()
 
         self.time_step = 0
 
