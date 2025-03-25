@@ -1,0 +1,92 @@
+robot_cfg:
+  asset_root: null
+  cspace_distance_weight:
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+  kinematics:
+    base_link: link_base
+    collision_link_names:
+      - link_base
+      - link1
+      - link2
+      - link3
+      - link4
+      - link5
+      - link6
+      - thumb_base
+#      - index_L1
+#      - index_L2
+#      - middle_L1
+#      - middle_L2
+#      - ring_L1
+#      - ring_L2
+#      - pinky_L1
+#      - pinky_L2
+#      - thumb_L1
+#      - thumb_L2
+    collision_sphere_buffer: 0.005
+    collision_spheres: spheres/xarm7_ability.yml
+    ee_link: ee_link
+    link_names: null
+    self_collision_buffer:
+      link_base: -0.01
+      link1: 0.0
+      link2: 0.0
+      link3: 0.0
+      link4: 0.0
+      link5: 0.0
+      link6: 0.0
+      thumb_base: 0.0
+#      index_L1: 0.0
+#      index_L2: 0.0
+#      middle_L1: 0.0
+#      middle_L2: 0.0
+#      ring_L1: 0.0
+#      ring_L2: 0.0
+#      pinky_L1: 0.0
+#      pinky_L2: 0.0
+#      thumb_L1: 0.0
+#      thumb_L2: 0.0
+    self_collision_ignore: {
+      link_base: [ link1, link2 ],
+      link1: [ link2, link3 ],
+      link2: [ link3, link4 ],
+      link3: [ link4, link5 ],
+      link4: [ link5, link6 ],
+      link5: [ link6, link7 ],
+      link6: [ link7, thumb_base ],
+#      thumb_base: [ index_L1, middle_L1, ring_L1, pinky_L1, thumb_L1, index_L2, middle_L2, ring_L2, pinky_L2, thumb_L2 ],
+#      thumb_L1: [ thumb_L2, index_L1, index_L2 ],
+#      thumb_L2: [ index_L1, index_L2 ],
+#      index_L1: [ index_L2, middle_L1, middle_L2 ],
+#      index_L2: [ middle_L1, middle_L2 ],
+#      middle_L1: [ middle_L2, ring_L1, ring_L2 ],
+#      middle_L2: [ ring_L1, ring_L2 ],
+#      ring_L1: [ ring_L2, pinky_L1, pinky_L2 ],
+#      ring_L2: [ pinky_L1, pinky_L2 ],
+#      pinky_L1: [ pinky_L2 ],
+    }
+    urdf_path: urdf/assembly/xarm7_ability/xarm7_ability_left_hand.urdf
+  max_acceleration: 15
+  #  max_jerk: 500.0
+  null_space_weight:
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 0.0
+  retract_config:
+    - -0.03141593
+    - 0.13439035
+    - 0.03141593
+    - 0.23911011
+    - 3.14159265
+    - 1.46433124
+    - -0.00349066

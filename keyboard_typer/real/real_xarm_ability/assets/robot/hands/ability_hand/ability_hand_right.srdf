@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<robot name="ability_right_hand">
+  <!--  Ability Only -->
+  <disable_collisions link1="base" link2="thumb_base" reason="Adjacent"/>
+  <disable_collisions link1="thumb_base" link2="index_L1" reason="Adjacent"/>
+  <disable_collisions link1="thumb_base" link2="middle_L1" reason="Adjacent"/>
+  <disable_collisions link1="thumb_base" link2="ring_L1" reason="Adjacent"/>
+  <disable_collisions link1="thumb_base" link2="pinky_L1" reason="Adjacent"/>
+  <disable_collisions link1="thumb_base" link2="thumb_L1" reason="Adjacent"/>
+  <disable_collisions link1="index_L1" link2="index_L2" reason="Adjacent"/>
+  <disable_collisions link1="middle_L1" link2="middle_L2" reason="Adjacent"/>
+  <disable_collisions link1="ring_L1" link2="ring_L2" reason="Adjacent"/>
+  <disable_collisions link1="pinky_L1" link2="pinky_L2" reason="Adjacent"/>
+  <disable_collisions link1="thumb_L1" link2="thumb_L2" reason="Adjacent"/>
+  <!--  Ability Only, start state. Why??> -->
+  <disable_collisions link1="ring_L1" link2="pinky_L2" reason="Adjacent"/>
+  <!--  Ability Only, for grasping -->
+  <disable_collisions link1="thumb_base" link2="thumb_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_base" link2="index_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_base" link2="middle_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_base" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_base" link2="pinky_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="index_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="index_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="middle_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="middle_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L1" link2="pinky_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="index_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="index_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="middle_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="middle_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="thumb_L2" link2="pinky_L2" reason="Grasp"/>
+
+  <disable_collisions link1="index_L1" link2="middle_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L1" link2="middle_L2" reason="Grasp"/>
+  <disable_collisions link1="index_L1" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L1" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="index_L1" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L1" link2="pinky_L2" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="middle_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="middle_L2" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="index_L2" link2="pinky_L2" reason="Grasp"/>
+
+  <disable_collisions link1="middle_L1" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="middle_L1" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="middle_L1" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="middle_L1" link2="pinky_L2" reason="Grasp"/>
+  <disable_collisions link1="middle_L2" link2="ring_L1" reason="Grasp"/>
+  <disable_collisions link1="middle_L2" link2="ring_L2" reason="Grasp"/>
+  <disable_collisions link1="middle_L2" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="middle_L2" link2="pinky_L2" reason="Grasp"/>
+
+  <disable_collisions link1="ring_L1" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="ring_L1" link2="pinky_L2" reason="Grasp"/>
+  <disable_collisions link1="ring_L2" link2="pinky_L1" reason="Grasp"/>
+  <disable_collisions link1="ring_L2" link2="pinky_L2" reason="Grasp"/>
+</robot>

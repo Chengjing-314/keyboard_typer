@@ -1,0 +1,24 @@
+robot_cfg:
+  dt: 0.05
+  urdf_path: urdf/assembly/xarm7_ability/xarm7_ability_left_hand.urdf
+
+  kinematics:
+    ik_damping: 1e-5
+    eps: 2e-3
+    ee_link: ee_link
+    fsr:
+      - thumb_tip
+      - thumb_bottom
+      - thumb_left
+      - thumb_right
+      - index_tip
+      - index_bottom
+      - index_right
+      - middle_tip
+      - middle_bottom
+      - ring_tip
+      - ring_bottom
+      - pinky_tip
+      - pinky_bottom
+      - pinky_left
+
