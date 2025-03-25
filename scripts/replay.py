@@ -1,5 +1,6 @@
 from keyboard_typer.mani_skill.envs.typer_env import TyperEnvConfig
 from keyboard_typer.curriculum.stages import StageConfig
+from keyboard_typer.constants import PROJECT_ROOT
 import gymnasium as gym 
 import numpy as np
 
@@ -23,20 +24,51 @@ def main():
     )
     env.reset()
     
-    intepolated_trajctory = np.load("/data/chengjingyuan/keyboard_typer/interpolated_trajectory.npy")
-    original_trajectory = np.load("/data/chengjingyuan/keyboard_typer/original_trajectory.npy")
+    episode_ids = np.load(PROJECT_ROOT / "episode_ids.npy")
     
-    rest_qpos = np.array(env.unwrapped.agent.keyframes['rest'].qpos)
+    traj = np.load(PROJECT_ROOT / "traj.npy").squeeze(1)
     
-    reset_idx = []
     
-    for i, qpos in enumerate(original_trajectory):
-        if np.allclose(qpos, rest_qpos, atol=1e-3):
-            reset_idx.append(i)
-   
-    for qpos in original_trajectory:
+    episode_traj = traj[episode_ids[1] + 1:episode_ids[2],:]    
+
+    def interpolate_joint_angles(angles, x):
+
+        """
+        Interpolates between each consecutive pair of joint angles.
+        
+        Parameters:
+          angles: np.array of shape (n, 17) -- original joint angles
+          x: int -- number of intermediate steps between each consecutive pair
+          
+        Returns:
+          np.array of shape ( (n-1)*(x+1) + 1, 17 ) with interpolated joint angles.
+        """
+        n, num_joints = angles.shape
+        interpolated = []  # to store the new sequence of joint angles
+
+        for i in range(n - 1):
+            start = angles[i]
+            end = angles[i + 1]
+            # Create x+2 points including both endpoints.
+            # We remove the last point to avoid duplicates except for the final pair.
+            t_values = np.linspace(0, 1, x + 2)
+            for t in t_values[:-1]:
+                interp_point = (1 - t) * start + t * end
+                interpolated.append(interp_point)
+        # Append the last point of the original sequence.
+        interpolated.append(angles[-1])
+        return np.array(interpolated)
+    
+    episode_traj = interpolate_joint_angles(episode_traj, 1000)
+
+    np.save(PROJECT_ROOT / "interpolated_trajectory.npy", episode_traj)
+    
+    env.reset()
+    for qpos in episode_traj:
         env.step(qpos)
         env.render_human()
+    
+    env.close() 
 
 
 

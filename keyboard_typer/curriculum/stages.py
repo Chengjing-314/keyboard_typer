@@ -22,6 +22,7 @@ class StageConfig:
     penetration_penalty_weight: float = 0.1
     penetration_zone: float = 1e-3
 
+
 class Stage(ABC):
     def __init__(self, env, config: StageConfig):
         self.env = env
@@ -192,7 +193,7 @@ class StageHandler(Stage):
         # Compute distance between target finger position and key position.
         tcp_distance = torch.norm(target_finger_pos - current_target_key_pos, dim=-1)
         tcp_distance_reward = torch.exp(-tcp_distance / 0.08)
-        
+
         # ----------------------------
         # Non-target Finger Position Penalty
         # ----------------------------
@@ -205,39 +206,42 @@ class StageHandler(Stage):
         non_target_finger_z = finger_tip_z[finger_mask].view(num_envs, -1)
 
         # Define keyboard height threshold (assuming key_default_qpos is the resting height)
-        keyboard_height_threshold = target_key_pos[:,0,2] + self.penetration_zone 
+        keyboard_height_threshold = target_key_pos[:, 0, 2] + self.penetration_zone
         min_non_target_finger_z = torch.min(non_target_finger_z, dim=-1)[0]
 
         # Compute penetration depth (how far below the keyboard they go)
-        penetration_depth = torch.clamp(keyboard_height_threshold - min_non_target_finger_z, min=0, max  = 0.02)
+        penetration_depth = torch.clamp(
+            keyboard_height_threshold - min_non_target_finger_z, min=0, max=0.02
+        )
 
         # Apply exponential penalty (similar to rewards)
-        penetration_penalty = -torch.exp(penetration_depth / 0.02)  + 1
+        penetration_penalty = -torch.exp(penetration_depth / 0.02) + 1
 
         # ----------------------------
         # Key Actuation Reward
         # ----------------------------
         current_target_key_indices = target_key_indices[
-                torch.arange(num_envs),
-                key_press_progress,
-            ]
+            torch.arange(num_envs),
+            key_press_progress,
+        ]
         target_key_qpos = keyboard_qpos[torch.arange(num_envs), current_target_key_indices]
 
         # Define actuation threshold
         actuation_threshold = 0.0025
         press_progress = torch.clamp(target_key_qpos / actuation_threshold, 0, 1)
-        key_actuation_reward = torch.exp(-(1 - press_progress) / 0.5) # 0.5 for 1st exp
-        
-        
+        key_actuation_reward = torch.exp(-(1 - press_progress) / 0.5)  # 0.5 for 1st exp
+
         # ----------------------------
         # Hand Qpos Reward
         # ----------------------------
         hand_qpos = qpos[:, -10:]
-        hand_qpos_weight = torch.tensor([1.0,0.3, 1.0, 1.0, 1.0, 1.0, 0.3, 1.0, 1.0, 1.0], device=hand_qpos.device).unsqueeze(0)
+        hand_qpos_weight = torch.tensor(
+            [1.0, 0.3, 1.0, 1.0, 1.0, 1.0, 0.3, 1.0, 1.0, 1.0], device=hand_qpos.device
+        ).unsqueeze(0)
         weighted_hand_qpos_distance = (hand_qpos - desired_hand_qpos) * hand_qpos_weight
         qpos_distance = torch.norm(weighted_hand_qpos_distance, dim=-1)
-        hand_qpos_reward = torch.exp(-qpos_distance / 5.0) # was 2.5
-        
+        hand_qpos_reward = torch.exp(-qpos_distance / 5.0)  # was 2.5
+
         # ----------------------------
         # Non-target Key Penalty
         # ----------------------------
@@ -273,12 +277,16 @@ class StageHandler(Stage):
             # + self.penetration_penalty_weight * penetration_penalty
         )
 
-        # reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.penetration_penalty_weight) #! no hand qpos reward for testing 
-        reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.hand_qpos_reward_weight) #! no hand qpos reward for testing 
+        # reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.penetration_penalty_weight) #! no hand qpos reward for testing
+        reward /= (
+            self.distance_reward_weight
+            + self.actuation_reward_weight
+            + self.hand_qpos_reward_weight
+        )  #! no hand qpos reward for testing
 
         # Apply a bonus for success.
         # reward[info["pressed"]] += 5
-        reward[info["success"]] += 10 
+        reward[info["success"]] += 10
         # reward /= (
         #     5
         #     + self.actuation_reward_weight
@@ -289,8 +297,8 @@ class StageHandler(Stage):
         # ----------------------------
         # Visualization Updates
         # ----------------------------
-        tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
-        goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
+        # tcp_viz.set_pose(Pose.create_from_pq(target_finger_pos))
+        # goal_viz.set_pose(Pose.create_from_pq(current_target_key_pos))
 
         reward_dict = dict(
             tcp_distance_reward=tcp_distance_reward.mean().item() * self.distance_reward_weight,
@@ -301,7 +309,8 @@ class StageHandler(Stage):
             # * self.action_regularization_weight,
             action_regularization=0,
             hand_qpos_reward=hand_qpos_reward.mean().item() * self.hand_qpos_reward_weight,
-            penetration_penalty=penetration_penalty.mean().item() * self.penetration_penalty_weight,
+            penetration_penalty=penetration_penalty.mean().item()
+            * self.penetration_penalty_weight,
         )
 
         return reward, reward_dict

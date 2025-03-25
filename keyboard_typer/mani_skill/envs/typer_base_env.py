@@ -92,7 +92,7 @@ class TyperBaseEnv(BaseEnv):
         #         joint_indices=torch.arange(
         #             len(active_joints), device=self.device, dtype=torch.int32
         #         ),
-    
+
         # Visualization markers (goal and TCP visualization)
         self.goal_viz = actors.build_sphere(
             self.scene,
@@ -122,7 +122,7 @@ class TyperBaseEnv(BaseEnv):
         # when kp go beyond 40, the contact between the hand and the key is unstable
 
         self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
-            [0.0, 0.0, 0.1], device=self.device
+            [0.005, 0.015, 0.1], device=self.device
         )  # to test pressing, set y to 0.015
         self.keyboard.set_pose(Pose.create_from_pq(self.keyboard_pos))
 
