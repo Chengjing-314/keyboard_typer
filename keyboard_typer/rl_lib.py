@@ -292,10 +292,10 @@ class PPOConfig:
 
     total_timesteps: int = 5_500_000
     num_steps: int = MAX_EPISODE_STEPS
-    num_eval_steps: int = MAX_EPISODE_STEPS
+    num_eval_steps: int = MAX_EPISODE_STEPS * 2
     num_minibatches: int = 32
     update_epochs: int = 4
-    eval_freq: int = 8
+    eval_freq: int = 6
 
     learning_rate: float = 3e-4
     anneal_lr: bool = False
@@ -310,6 +310,7 @@ class PPOConfig:
     target_kl: float = 0.1
     ent_coef: float = 0.0
     vf_coef: float = 0.5
+    # vf_coef: float = 0.1
     max_grad_norm: float = 0.5
 
     obs_mode = "state"
@@ -769,23 +770,21 @@ class PPO_typer(PPO):
 
     def reset_reward(self):
         self.tcp_distance_reward = 0
-        self.over_all_distance_reward = 0
         self.key_actuation_reward = 0
         self.rotation_distance_reward = 0
         self.velocity_penalty = 0
         self.wrong_key_penalty = 0
         self.hand_qpos_reward = 0
         self.action_regularization = 0
+        self.penetration_penalty = 0
 
     def update_reward(self, reward_dict):
         self.tcp_distance_reward += reward_dict["tcp_distance_reward"]
-        self.over_all_distance_reward += reward_dict["over_all_distance_reward"]
         self.key_actuation_reward += reward_dict["key_actuation_reward"]
-        self.rotation_distance_reward += reward_dict["rotation_distance_reward"]
-        self.velocity_penalty += reward_dict["velocity_penalty"]
         self.wrong_key_penalty += reward_dict["wrong_key_penalty"]
-        self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
         self.action_regularization += reward_dict["action_regularization"]
+        self.hand_qpos_reward += reward_dict["hand_qpos_reward"]
+        self.penetration_penalty += reward_dict["penetration_penalty"]
 
     def process_obs(self, obs: dict):
         agent_dict = obs["agent"]
@@ -816,7 +815,6 @@ class PPO_typer(PPO):
         )
 
         return obs
- 
 
     def train(self, seed: int = 0, stage_config: StageConfig = None):
         random.seed(seed)
@@ -835,7 +833,7 @@ class PPO_typer(PPO):
                 save_code=True,
                 monitor_gym=True,
             )
-            
+
         wandb.config.update(asdict(stage_config))
 
         optimizer = optim.Adam(self.agent.parameters(), lr=self.config.learning_rate, eps=1e-5)
@@ -888,6 +886,8 @@ class PPO_typer(PPO):
 
         def clip_action(action: torch.Tensor):
             return torch.clamp(action.detach(), action_space_low, action_space_high)
+    
+        eva_best_success_rate = 0
 
         for iteration in range(1, num_iterations + 1):
             console.log(f"Epoch: {iteration}, {global_step=}")
@@ -910,7 +910,6 @@ class PPO_typer(PPO):
                         eval_obs, _, eval_terminations, eval_truncations, eval_infos = (
                             self.eval_env.step(action)
                         )
-                        # eval_obs = self.normalize_qpos(eval_obs)
                         if "final_info" in eval_infos:
                             mask = eval_infos["_final_info"]
                             eps_lens.append(
@@ -952,7 +951,6 @@ class PPO_typer(PPO):
                     if self.config.use_wandb:
                         wandb.log({"eval/fail_rate": failures.mean()}, step=global_step)
                     console.log(f"eval_fail_rate={failures.mean()}")
-
                 console.log(f"eval_episodic_return={returns.mean()}")
                 for key, value in return_components.items():
                     console.log(f"eval_episodic_return_{key}={value.mean()}")
@@ -970,6 +968,16 @@ class PPO_typer(PPO):
                 )
                 os.makedirs(os.path.dirname(model_path), exist_ok=True)
                 torch.save(self.agent.state_dict(), model_path)
+                if successes.mean() > eva_best_success_rate:
+                    eva_best_success_rate = successes.mean()
+                    best_model_path = os.path.join(
+                        self.config.exp_root,
+                        self.config.exp_name,
+                        "ckpts",
+                        f"best_model.pt",
+                    )
+                    torch.save(self.agent.state_dict(), best_model_path)
+                    console.log(f"best model saved to {best_model_path}")
                 console.log(f"model saved to {model_path}")
 
             # Annealing the rate if instructed to do so.
@@ -994,6 +1002,7 @@ class PPO_typer(PPO):
                 logprobs[step] = logprob
 
                 # TRY NOT TO MODIFY: execute the game and log data.
+                #!!
                 next_obs, reward, terminations, truncations, infos = self.env.step(
                     clip_action(action)
                 )
@@ -1222,16 +1231,13 @@ class PPO_typer(PPO):
                 wandb.log(
                     {
                         "rewards/tcp_distance": self.tcp_distance_reward / self.config.num_steps,
-                        "rewards/over_all_distance": self.over_all_distance_reward
-                        / self.config.num_steps,
                         "rewards/key_actuation": self.key_actuation_reward / self.config.num_steps,
-                        "rewards/rotation_distance": self.rotation_distance_reward
-                        / self.config.num_steps,
-                        "rewards/velocity_penalty": self.velocity_penalty / self.config.num_steps,
                         "rewards/wrong_key_penalty": self.wrong_key_penalty
                         / self.config.num_steps,
+                        "rewards/action_regularization": self.action_regularization
+                        / self.config.num_steps,
                         "rewards/hand_qpos": self.hand_qpos_reward / self.config.num_steps,
-                        "rewards/action_regularization": self.action_regularization / self.config.num_steps,
+                        "rewards/penetration_penalty": self.penetration_penalty / self.config.num_steps,
                     },
                     step=global_step,
                 )
@@ -1256,6 +1262,7 @@ class PPO_typer(PPO):
         failures = []
         if save_traj:
             traj = []
+            episode_ids = []
         for i in range(self.config.num_eval_steps):
             with torch.no_grad():
                 action = self.agent.get_action(eval_obs, deterministic=True)
@@ -1265,6 +1272,7 @@ class PPO_typer(PPO):
                 traj.append(self.eval_env.unwrapped.agent.robot.qpos.cpu().numpy())
                 if "final_info" in eval_infos:
                     mask = eval_infos["_final_info"]
+                    episode_ids.append(i)
                     eps_lens.append(eval_infos["final_info"]["elapsed_steps"][mask].cpu().numpy())
                     returns.append(eval_infos["final_info"]["episode"]["r"][mask].cpu().numpy())
                     if "reward_components" in eval_infos["final_info"]:
@@ -1298,6 +1306,14 @@ class PPO_typer(PPO):
                 os.path.join(self.config.exp_root, self.config.exp_name, "traj.npy"),
                 np.array(traj),
             )
+            np.save(
+                os.path.join(self.config.exp_root, self.config.exp_name, "episode_ids.npy"),
+                np.array(episode_ids),
+            )
+            
+            console.log(f"saved {len(episode_ids)} episodes to {self.config.exp_root}/{self.config.exp_name}")
+            
+        return np.array(traj)
 
     def log_extra(self, global_step):
         pass

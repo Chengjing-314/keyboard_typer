@@ -30,17 +30,39 @@ class TyperEnvConfig(TyperEnvBaseConfig):
             0.5,
         ]
     )  # Relative values, Z will scale with kb_height, AKA dont change z here, can change x and y
+    kb_debug: bool = False
 
 
 @register_env("TyperEnv-v0", max_episode_steps=MAX_EPISODE_STEPS)
 class TyperEnv(TyperBaseEnv):
-    def __init__(self, *args, config: TyperEnvConfig, robot_uids: str = "", stage_config: StageConfig = None, **kwargs):
+    def __init__(
+        self,
+        *args,
+        config: TyperEnvConfig,
+        robot_uids: str = "",
+        stage_config: StageConfig = None,
+        **kwargs,
+    ):
         self.stage = 1  # Current stage
         self.handlers = {1: StageHandler(self, stage_config)}
         self.target_key_pos = None
         self.target_finger = None
         self.key_default_qpos = None
-        self.num_chars = 3
+        self.num_chars = 1
+        self.single_finger = torch.tensor(
+            [
+                0.0,
+                0.394,
+                2.094,
+                2.094,
+                2.094,
+                2.094,
+                1.089,
+                2.659,
+                2.659,
+                2.659,
+            ],
+        )
         super().__init__(*args, config=config, robot_uids="", **kwargs)
 
     def _initialize_episode(self, env_idx, options):
@@ -50,7 +72,8 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos = low + (high - low) * 1 / 3
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
-        self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        # self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        self.desired_hand_qpos = self.single_finger.to(self.device) 
         self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:]
         if self.stage in self.handlers:
             if self.target_key_pos is None:
@@ -153,7 +176,7 @@ class TyperEnv(TyperBaseEnv):
                 - target_finger_pos,
                 dim=-1,
             )
-            <= 0.01
+            <= 0.005
         )
 
         current_target_key_indices = self.target_key_indices[
@@ -165,18 +188,20 @@ class TyperEnv(TyperBaseEnv):
         ]
 
         pressed = target_key_qpos > 0.0025
+        
+        key_success = reached & pressed
 
-        self.key_press_progress[pressed] = torch.clamp(
-            self.key_press_progress[pressed] + 1, 0, self.num_chars - 1
+        self.key_press_progress[key_success] = torch.clamp(
+            self.key_press_progress[key_success] + 1, 0, self.num_chars
         )
 
-        finished = (self.key_press_progress == (self.num_chars - 1)) & pressed
+        finished = self.key_press_progress == self.num_chars
 
-        # force_fail = torch.zeros_like(finished, device=self.device)
+        self.key_press_progress = torch.clamp(
+            self.key_press_progress, 0, self.num_chars - 1
+)
 
-        # return {"success": force_fail}
-
-        return {"success": reached & finished}
+        return {"success": finished, "pressed": key_success} 
 
     def get_reward_details(self):
         return self.reward_dict

@@ -28,6 +28,7 @@ class TyperEnvBaseConfig:
     bimanual: bool = False
     initial_agent_poses: Union[sapien.Pose, list[sapien.Pose]] = None
     fix_keyboard: bool = True
+    kb_debug: bool = False
 
 
 def create_keyboard(scene: sapien.Scene, kb_manager: Keyboard, config: TyperEnvBaseConfig, device):
@@ -83,7 +84,8 @@ class TyperBaseEnv(BaseEnv):
             link.set_disable_gravity(True)
 
         for ac_joint in self.keyboard.get_active_joints():
-            ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
+            # ac_joint.set_drive_properties(stiffness=10, damping=0, force_limit=1e-6)
+            ac_joint.set_drive_properties(stiffness=100, damping=100, force_limit=3e-5)
         # active_joints = self.keyboard.get_active_joints()
         # if self.num_envs > 1:
         #     self.keyboard.set_joint_drive_targets(
@@ -120,9 +122,14 @@ class TyperBaseEnv(BaseEnv):
         # We observed some keys will drop and maintain at 0.001 instead of 0, we set activation threshold to 0.002 to just be safe
         # when kp go beyond 40, the contact between the hand and the key is unstable
 
-        self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
-            [0.0, 0.0, 0.1], device=self.device
-        )  # to test pressing, set y to 0.015
+        if self.config.kb_debug:
+            self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
+                [0.005, 0.015, 0.1], device=self.device
+            )  
+        else:
+            self.keyboard_pos = self.keyboard_initial_pose + torch.tensor(
+                [0.0, 0.0, 0.1], device=self.device
+            )
         self.keyboard.set_pose(Pose.create_from_pq(self.keyboard_pos))
 
         self.keyboard.set_qpos(torch.zeros((num_envs, self.keyboard.dof[0]), device=self.device))
@@ -130,13 +137,15 @@ class TyperBaseEnv(BaseEnv):
         if self.config.bimanual:
             for agent in self.agent.agents:
                 agent.reset()
+                # agent.index_poke()
         else:
             self.agent.reset()
+            # self.agent.index_poke()
 
         self.time_step = 0
 
-        # self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
-        # self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        self.goal_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
+        self.tcp_viz.set_pose(Pose.create_from_pq(self.keyboard_initial_pose))
 
     @property
     def _default_human_render_camera_configs(self):
