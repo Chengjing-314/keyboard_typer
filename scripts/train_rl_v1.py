@@ -51,7 +51,7 @@ if __name__ == "__main__":
     args.stage_config.hand_qpos_reward_weight = 5.0
     args.stage_config.penetration_penalty_weight = 2.0
     args.stage_config.action_regularization_weight = 1.0
-    args.stage_config.wrong_key_penality_weight = 0.0
+    args.stage_config.wrong_key_penality_weight = 4.0
     args.stage_config.penetration_zone = 1e-3
 
     # args.agent_config.load_from = (

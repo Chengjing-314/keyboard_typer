@@ -886,6 +886,8 @@ class PPO_typer(PPO):
 
         def clip_action(action: torch.Tensor):
             return torch.clamp(action.detach(), action_space_low, action_space_high)
+    
+        eva_best_success_rate = 0
 
         for iteration in range(1, num_iterations + 1):
             console.log(f"Epoch: {iteration}, {global_step=}")
@@ -966,6 +968,16 @@ class PPO_typer(PPO):
                 )
                 os.makedirs(os.path.dirname(model_path), exist_ok=True)
                 torch.save(self.agent.state_dict(), model_path)
+                if successes.mean() > eva_best_success_rate:
+                    eva_best_success_rate = successes.mean()
+                    best_model_path = os.path.join(
+                        self.config.exp_root,
+                        self.config.exp_name,
+                        "ckpts",
+                        f"best_model.pt",
+                    )
+                    torch.save(self.agent.state_dict(), best_model_path)
+                    console.log(f"best model saved to {best_model_path}")
                 console.log(f"model saved to {model_path}")
 
             # Annealing the rate if instructed to do so.

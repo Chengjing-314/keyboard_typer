@@ -30,6 +30,7 @@ class TyperEnvConfig(TyperEnvBaseConfig):
             0.5,
         ]
     )  # Relative values, Z will scale with kb_height, AKA dont change z here, can change x and y
+    kb_debug: bool = False
 
 
 @register_env("TyperEnv-v0", max_episode_steps=MAX_EPISODE_STEPS)

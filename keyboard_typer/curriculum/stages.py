@@ -255,10 +255,8 @@ class StageHandler(Stage):
             torch.arange(num_envs).unsqueeze(-1), non_target_key_indices
         ]
         non_target_key_activation_count = (non_target_key_qpos > 0.0025).sum(dim=-1)
-        exist_wrong_key = non_target_key_activation_count > 0
-        non_target_activation_penalty = (
-            exist_wrong_key - 1
-        ) * 0.5  # if there is wrong key, we dont give additional reward
+        exist_wrong_key = (non_target_key_activation_count > 0).float()
+        non_target_activation_penalty = exist_wrong_key
 
         # ----------------------------
         # Action Regularization
@@ -275,8 +273,8 @@ class StageHandler(Stage):
         reward = (
             self.distance_reward_weight * tcp_distance_reward
             + self.actuation_reward_weight * key_actuation_reward
-            + (-self.action_regularization_weight * action_regularization)
-            + self.wrong_key_penality_weight * non_target_activation_penalty
+            # + (-self.action_regularization_weight * action_regularization)
+            + (-self.wrong_key_penality_weight * non_target_activation_penalty)
             # + self.hand_qpos_reward_weight * hand_qpos_reward
             # + self.penetration_penalty_weight * penetration_penalty
         )
@@ -284,7 +282,7 @@ class StageHandler(Stage):
         # reward /= (  self.distance_reward_weight + self.actuation_reward_weight + self.penetration_penalty_weight) #! no hand qpos reward for testing
         reward /= (
             self.distance_reward_weight
-            + self.actuation_reward_weight
+            # + self.actuation_reward_weight
             + self.wrong_key_penality_weight
             + self.action_regularization_weight
             # + self.hand_qpos_reward_weight
@@ -311,14 +309,13 @@ class StageHandler(Stage):
             key_actuation_reward=key_actuation_reward.mean().item() * self.actuation_reward_weight,
             # key_actuation_reward=0,
             # wrong_key_penalty=0,
-            wrong_key_penalty=non_target_activation_penalty.mean().item()
+            wrong_key_penalty=-non_target_activation_penalty.mean().item()
             * self.wrong_key_penality_weight,
-            # action_regularization=action_regularization.mean().item()
+            # action_regularization= -action_regularization.mean().item()
             # * self.action_regularization_weight,
-            # action_regularization=0,
-            action_regularization=action_regularization.mean().item()
-            * self.action_regularization_weight,
-            hand_qpos_reward=hand_qpos_reward.mean().item() * self.hand_qpos_reward_weight,
+            action_regularization=0,
+            # hand_qpos_reward=hand_qpos_reward.mean().item() * self.hand_qpos_reward_weight,
+            hand_qpos_reward=0,
             penetration_penalty=penetration_penalty.mean().item()
             * self.penetration_penalty_weight,
         )
