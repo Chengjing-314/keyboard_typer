@@ -42,6 +42,7 @@ if __name__ == "__main__":
     args.trainer.exp_name = args.exp_name
     args.trainer.obs_mode = args.obs_mode
     args.agent_config.obs = args.obs_mode
+
     args.seed = 1
 
     # Task parameters
@@ -61,6 +62,7 @@ if __name__ == "__main__":
     # args.agent_config.load_from = (
     #     "/data/chengjingyuan/keyboard_typer/logs/reset_init_scratch/ckpts/ckpt_181.pt"
     # )
+
 
     # env setup
     train_env_kwargs = dict(
