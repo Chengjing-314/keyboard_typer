@@ -73,7 +73,7 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
         # self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
-        self.desired_hand_qpos = self.single_finger.to(self.device) 
+        self.desired_hand_qpos = self.single_finger.to(self.device)
         self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:]
         if self.stage in self.handlers:
             if self.target_key_pos is None:
@@ -188,7 +188,7 @@ class TyperEnv(TyperBaseEnv):
         ]
 
         pressed = target_key_qpos > 0.0025
-        
+
         key_success = reached & pressed
 
         self.key_press_progress[key_success] = torch.clamp(
@@ -197,11 +197,9 @@ class TyperEnv(TyperBaseEnv):
 
         finished = self.key_press_progress == self.num_chars
 
-        self.key_press_progress = torch.clamp(
-            self.key_press_progress, 0, self.num_chars - 1
-)
+        self.key_press_progress = torch.clamp(self.key_press_progress, 0, self.num_chars - 1)
 
-        return {"success": finished, "pressed": key_success} 
+        return {"success": finished, "pressed": key_success}
 
     def get_reward_details(self):
         return self.reward_dict
@@ -227,11 +225,14 @@ class TyperEnv(TyperBaseEnv):
 if __name__ == "__main__":
     config = TyperEnvConfig()
 
+    stage_config = StageConfig()
+
     n_envs = 1
 
     env = gym.make(
         "TyperEnv-v0",
         config=config,
+        stage_config=stage_config,
         render_mode="human",
         num_envs=n_envs,
         obs_mode="state_dict",
@@ -337,17 +338,25 @@ if __name__ == "__main__":
         ]
     )
 
+    action_test = torch.concat((action_raise[:7], env.unwrapped.desired_hand_qpos))
+
+    print(action_test[-10:])
+
+    while True:
+        env.step(action_test)
+        env.unwrapped.render_human()
+
     # while True:
     #     env.step(action)
     #     env.unwrapped.render_human()
 
-    for i in range(int(1e3)):
-        if i < 5e2:
-            env.step(action)
-        else:
-            env.step(action_raise)
-        env.unwrapped.render_human()
-        print(env.unwrapped.keyboard.qpos[0, 42].item())
+    # for i in range(int(1e3)):
+    #     if i < 5e2:
+    #         env.step(action)
+    #     else:
+    #         env.step(action_raise)
+    #     env.unwrapped.render_human()
+    #     print(env.unwrapped.keyboard.qpos[0, 42].item())
 
     # for i, q in enumerate(traj):
     #     # env.step(q)

@@ -11,6 +11,7 @@ import h5py
 import yaml
 import numpy as np
 import transforms3d
+
 # import open3d as o3d
 from scipy.spatial.transform import Rotation as R
 from transforms3d.euler import euler2quat, mat2euler, euler2mat, quat2euler
@@ -68,7 +69,7 @@ class RealEnv:
             use_servo_control=use_servo_control,
             enable_finger_tactile=enable_finger_tactile,
             enable_palm_tactile=enable_palm_tactile,
-            finger_port='/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_44231313430351F0D1B1-if00',
+            finger_port="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_44231313430351F0D1B1-if00",
             # finger_port="/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_4423131343035140A011-if00",
             palm_port="/dev/ttyACM1",
             enable_joint_teaching=enable_joint_teaching,
@@ -115,6 +116,9 @@ class RealEnv:
     def control_qpos(self, target_qpos):
         self.robot.control_arm_qpos(target_qpos[:7])
         self.robot.control_hand_qpos(target_qpos[7:])
+
+    def control_hand_qpos(self, target_hand_qpos):
+        self.robot.control_hand_qpos(target_hand_qpos)
 
     def robot_step(self, target_ee_pose, hand_joint_angle):
         hand_rot = target_ee_pose[3:]

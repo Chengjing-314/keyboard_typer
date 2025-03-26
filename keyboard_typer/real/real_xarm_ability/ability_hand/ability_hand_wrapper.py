@@ -31,9 +31,9 @@ class RealAbilityHand:
         hand_address=0x50,
         plot_touch=False,
         enable_finger_tactile=False,
-        enable_palm_tactile = False,
+        enable_palm_tactile=False,
         finger_port="/dev/ttyACM0",
-        palm_port ="/dev/ttyACM1",
+        palm_port="/dev/ttyACM1",
         verbose=False,
     ) -> None:
         self.usb_port = usb_port
@@ -64,7 +64,7 @@ class RealAbilityHand:
         self.farr_to_barrs = {
             0x10: farr_to_dposition,
             0x20: farr_to_dvelocity,
-            0x30: farr_to_dcurrent
+            0x30: farr_to_dcurrent,
         }
 
         self.plot_touch = plot_touch
@@ -89,11 +89,13 @@ class RealAbilityHand:
 
         self.enable_finger_tactile = enable_finger_tactile
         self.enable_palm_tactile = enable_palm_tactile
-        
+
         if self.enable_palm_tactile and not self.enable_finger_tactile:
             raise ValueError("Palm tactile sensor cannot be enabled without finger tactile sensor")
         if self.plot_touch and self.enable_finger_tactile:
-            raise ValueError("Plotting touch data is not supported when finger tactile sensor is enabled")
+            raise ValueError(
+                "Plotting touch data is not supported when finger tactile sensor is enabled"
+            )
 
         if self.enable_finger_tactile:
             if not self.enable_palm_tactile:
@@ -114,7 +116,7 @@ class RealAbilityHand:
     def start_thread(self):
         if self.enable_finger_tactile:
             self.tactile_sensor.start()
-        
+
         if self.current_joint_target is None:
             raw_pos = self.get_hand_state()["raw_pos"]
             self.current_joint_target = mp.Array("d", 6, lock=True)
@@ -185,7 +187,8 @@ class RealAbilityHand:
         with self.reply_mode.get_lock():
             # print('real reply mode', self.reply_mode.value, self.farr_to_barrs[self.reply_mode.value & 0xF0])
             msg = self.farr_to_barrs[self.reply_mode.value & 0xF0](
-                self.hand_address, farr, self.reply_mode.value - 0x10)
+                self.hand_address, farr, self.reply_mode.value - 0x10
+            )
         return msg
 
     @staticmethod
@@ -198,6 +201,12 @@ class RealAbilityHand:
 
         return joint[[2, 4, 6, 8, 1, 0]]
         # return joint[[0, 2, 4, 6, 8, 9]]
+
+    @staticmethod
+    def joint_remap_10_qpos_to_6_maniskill(joint):
+        # Maniskill Order:
+        # thumb l1, index l1, middle l1, ring l1, pinky l1, thumb l2, index l2, middle l2, ring l2, pinky l2
+        return joint[[1, 2, 3, 4, 5, 0]]
 
     @staticmethod
     def joint_remap_6_qpos_to_10(joint):
@@ -213,7 +222,7 @@ class RealAbilityHand:
 
     def set_joint_angle(self, joint_angle, reply_mode=None, dt=0.01):
         if len(joint_angle) == 10:
-            joint_angle = self.joint_remap_10_qpos_to_6(joint_angle)
+            joint_angle = self.joint_remap_10_qpos_to_6_maniskill(joint_angle)
         if reply_mode is not None:
             self.setup_reply_mode(reply_mode)
 
@@ -302,16 +311,14 @@ class RealAbilityHand:
             current_qvel[:] = self.current_joint_vel_read[:]
 
         if self.enable_finger_tactile:
-            current_touch = self.tactile_sensor.get_tactile() # (18,)
+            current_touch = self.tactile_sensor.get_tactile()  # (18,)
         else:
             with self.current_touch_read.get_lock():
                 current_touch = np.empty(30)
                 current_touch[:] = self.current_touch_read[:]
 
         temp_current_joint_read = current_qpos / 180 * np.pi
-        augmented_joint_pos_read = self.joint_remap_6_qpos_to_10(
-            temp_current_joint_read
-        )
+        augmented_joint_pos_read = self.joint_remap_6_qpos_to_10(temp_current_joint_read)
 
         return {
             "pos": augmented_joint_pos_read,
@@ -328,7 +335,7 @@ class RealAbilityHand:
                 current_target_joint_pos[:] = self.current_joint_target[:]
             self._inner_set_joint_angle(current_target_joint_pos)
             hand_state = self.get_hand_state()
-            
+
             time.sleep(1 / self.control_frequency)
             # print(time.monotonic() - start, 1/ self.control_frequency - (time.monotonic() - start))
             # if time.monotonic() - start < 1 / self.control_frequency:
