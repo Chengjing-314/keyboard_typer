@@ -9,6 +9,7 @@ import pinocchio as pin
 from pytransform3d import transformations as pt
 import sys
 from keyboard_typer.constants import PROJECT_ROOT
+
 sys.path.append(str(PROJECT_ROOT / "keyboard_typer/real/real_xarm_ability"))
 
 
@@ -151,7 +152,9 @@ class XArm7Ability:
         if qpos.shape[0] == 7:
             qpos = np.concatenate([qpos, np.zeros(10)])
         pin.forwardKinematics(self.pin_model, self.pin_data, np.array(qpos))
-        ee_pose: pin.SE3 = pin.updateFramePlacement(self.pin_model, self.pin_data, self.ee_frame_id)
+        ee_pose: pin.SE3 = pin.updateFramePlacement(
+            self.pin_model, self.pin_data, self.ee_frame_id
+        )
         return ee_pose
 
     def compute_ik(self, ee_pose: pin.SE3, init_qpos):
@@ -232,7 +235,9 @@ class XArm7Ability:
                     self.use_arm = False
 
                 if self.use_servo_control:
-                    safe_control_qpos = self.clip_arm_next_qpos(arm_qpos, velocity_limit=self.arm_velocity_limit)
+                    safe_control_qpos = self.clip_arm_next_qpos(
+                        arm_qpos, velocity_limit=self.arm_velocity_limit
+                    )
                     self.arm.set_servo_angle_j(angles=safe_control_qpos)
                 else:
                     code, xarm_state = self.arm.get_joint_states(is_radian=True)
@@ -286,7 +291,9 @@ class XArm7Ability:
     # Test Function
     def generate_circle_motion(self, radius, init_qpos, steps):
         pin.forwardKinematics(self.pin_model, self.pin_data, np.array(init_qpos))
-        ee_pose: pin.SE3 = pin.updateFramePlacement(self.pin_model, self.pin_data, self.ee_frame_id)
+        ee_pose: pin.SE3 = pin.updateFramePlacement(
+            self.pin_model, self.pin_data, self.ee_frame_id
+        )
 
         center_pos = ee_pose.translation + np.array([0, 0, radius])
         last_qpos = np.array(init_qpos)
@@ -325,4 +332,6 @@ def compute_pose_diff(current_posquat: np.ndarray, target_posquat: np.ndarray):
 
 def compute_target_pose(current_posquat: np.ndarray, twist: np.ndarray):
     relative_motion: pin.SE3 = pin.exp(twist)
-    return pt.pq_from_transform(pt.transform_from_pq(current_posquat) @ relative_motion.homogeneous)
+    return pt.pq_from_transform(
+        pt.transform_from_pq(current_posquat) @ relative_motion.homogeneous
+    )
