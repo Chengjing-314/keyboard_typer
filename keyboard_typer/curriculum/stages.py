@@ -74,12 +74,16 @@ class StageHandler(Stage):
         # target_finger = torch.randint(1, 2, (num_envs,), device=device)
 
         target_finger = torch.randint(
-            1, 2, (num_envs, num_chars), device=device
+            1, 5, (num_envs, num_chars), device=device 
         )  # FIXME: only training for 1 finger
 
-        self.target_key_press, self.target_key_indices = kb_manager.simulate_key_presses_over_time(
-            num_chars, num_envs
-        )
+        # self.target_key_press, self.target_key_indices = kb_manager.simulate_key_presses_over_time(
+        #     num_chars, num_envs
+        # )
+        
+        # self.target_key_press, self.target_key_indices = kb_manager.simulate_key_presses_over_time(2, num_envs)
+        self.target_key_press, self.target_key_indices = kb_manager.simulate_stage_key_presses(num_envs, stage=1)
+        self.target_key_indices = self.target_key_indices[np.newaxis, ...] # multi_finger_stage_1 only
 
         self.target_key_indices = torch.tensor(np.array(self.target_key_indices).T, device=device)
 

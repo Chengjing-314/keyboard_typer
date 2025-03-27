@@ -54,6 +54,9 @@ class Keyboard:
             batched_indices.append(indices)
         return batched_key_names, batched_indices
 
+   
+        
+
 
 class BlackKeyboard(Keyboard):
     def __init__(self, actuation_point=0.015):
@@ -135,6 +138,51 @@ class BlackKeyboard(Keyboard):
     def simulate_key_presses_word(self, word: str, num_envs: int):
         # TODO: implement word to key mapping
         pass
+
+    def simulate_stage_key_presses(self, num_envs: int, stage: int):
+        """
+        Simulate key presses based on a stage:
+          Stage 1: Only the key "h" is used.
+          Stage 2: A predefined set of 12 keys around "h" is used.
+          Stage 3 and beyond: All keys are available.
+
+        Args:
+            num_envs (int): Number of environments for which to simulate key presses.
+            stage (int): Stage number (1, 2, or 3+).
+
+        Returns:
+            tuple: Simulated key names and their corresponding indices.
+        """
+        if stage == 1:
+            # Only "h" is used (mapping key: "key_h")
+            key = "key_h"
+            index = int(np.where(self.mapping_array == key)[0][0])
+            key_names = np.array([key] * num_envs)
+            indices = np.array([index] * num_envs)
+            return key_names, indices
+
+        elif stage == 2:
+            # Predefined list of 12 keys around "h"
+            stage2_keys = [
+                "key_h", "key_g", "key_j", "key_y", "key_u", "key_t",
+                "key_i", "key_f", "key_k", "key_b", "key_n", "key_d"
+            ]
+            # Filter to ensure they exist in the mapping
+            stage2_keys = [k for k in stage2_keys if k in self.mapping_array]
+            if not stage2_keys:
+                raise ValueError("Stage 2 keys not found in mapping.")
+            # Get original indices of the stage 2 keys
+            stage2_indices = np.array([int(np.where(self.mapping_array == k)[0][0]) for k in stage2_keys])
+            # Randomly sample indices from the stage2 subset
+            sample_idx = np.random.choice(len(stage2_indices), num_envs, replace=True)
+            selected_indices = stage2_indices[sample_idx]
+            key_names = self.mapping_array[selected_indices]
+            return key_names, selected_indices
+
+        else:
+            # Stage 3 and beyond: use all keys available (call the base function)
+            return self.simulate_key_presses(num_envs)
+        
 
     @staticmethod
     def _load_bounding_box():
