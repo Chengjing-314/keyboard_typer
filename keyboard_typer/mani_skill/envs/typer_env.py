@@ -72,8 +72,8 @@ class TyperEnv(TyperBaseEnv):
         temp_desired_qpos = low + (high - low) * 1 / 3
         temp_desired_qpos[0] = low[0] + (high[0] - low[0])
         temp_desired_qpos[1] = low[1] + (high[1] - low[1]) * 1 / 5
-        # self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
-        self.desired_hand_qpos = self.single_finger.to(self.device) 
+        self.desired_hand_qpos = torch.tensor(temp_desired_qpos, device=self.device)
+        # self.desired_hand_qpos = self.single_finger.to(self.device) 
         self.desired_wrist_rot = self.agent.get_wrist_raw_pose()[0, 3:]
         if self.stage in self.handlers:
             if self.target_key_pos is None:

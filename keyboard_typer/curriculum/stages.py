@@ -284,10 +284,9 @@ class StageHandler(Stage):
         reward = (
             self.distance_reward_weight * tcp_distance_reward
             + self.actuation_reward_weight * key_actuation_reward
-
             # + (-self.action_regularization_weight * action_regularization)
             + (-self.wrong_key_penality_weight * non_target_activation_penalty)
-            # + self.hand_qpos_reward_weight * hand_qpos_reward
+            + self.hand_qpos_reward_weight * hand_qpos_reward
             # + self.penetration_penalty_weight * penetration_penalty
         )
 
@@ -297,7 +296,7 @@ class StageHandler(Stage):
             # + self.actuation_reward_weight
             + self.wrong_key_penality_weight
             + self.action_regularization_weight
-            # + self.hand_qpos_reward_weight
+            + self.hand_qpos_reward_weight
         )  #! no hand qpos reward for testing
 
         # Apply a bonus for success.
@@ -327,8 +326,8 @@ class StageHandler(Stage):
             # action_regularization= -action_regularization.mean().item()
             # * self.action_regularization_weight,
             action_regularization=0,
-            # hand_qpos_reward=hand_qpos_reward.mean().item() * self.hand_qpos_reward_weight,
-            hand_qpos_reward=0,
+            hand_qpos_reward=hand_qpos_reward.mean().item() * self.hand_qpos_reward_weight,
+            # hand_qpos_reward=0,
             penetration_penalty=penetration_penalty.mean().item()
             * self.penetration_penalty_weight,
         )
